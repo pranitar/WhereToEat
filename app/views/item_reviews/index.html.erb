@@ -1,0 +1,37 @@
+<h1>Listing item_reviews</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Restaurant</th>
+      <th>User</th>
+      <th>Item</th>
+      <th>Review</th>
+      <th>Rating</th>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item_reviews.each do |item_review| %>
+      <tr>
+        <td><%= item_review.restaurant %></td>
+        <td><%= item_review.user %></td>
+        <td><%= item_review.item %></td>
+        <td><%= item_review.review %></td>
+        <td><%= item_review.rating %></td>
+        <td><%= item_review.date %></td>
+        <td><%= link_to 'Show', item_review %></td>
+        <td><%= link_to 'Edit', edit_item_review_path(item_review) %></td>
+        <td><%= link_to 'Destroy', item_review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item review', new_item_review_path %>

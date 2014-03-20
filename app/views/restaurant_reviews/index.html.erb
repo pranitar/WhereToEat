@@ -1,0 +1,35 @@
+<h1>Listing restaurant_reviews</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Restaurant</th>
+      <th>User</th>
+      <th>Review</th>
+      <th>Rating</th>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurant_reviews.each do |restaurant_review| %>
+      <tr>
+        <td><%= restaurant_review.restaurant %></td>
+        <td><%= restaurant_review.user %></td>
+        <td><%= restaurant_review.review %></td>
+        <td><%= restaurant_review.rating %></td>
+        <td><%= restaurant_review.date %></td>
+        <td><%= link_to 'Show', restaurant_review %></td>
+        <td><%= link_to 'Edit', edit_restaurant_review_path(restaurant_review) %></td>
+        <td><%= link_to 'Destroy', restaurant_review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Restaurant review', new_restaurant_review_path %>

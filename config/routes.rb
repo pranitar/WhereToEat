@@ -1,4 +1,16 @@
 WhereToEat::Application.routes.draw do
+  resources :item_reviews
+
+  resources :items
+
+  resources :menus
+
+  resources :restaurant_reviews
+
+  resources :users
+
+  resources :restaurants
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
