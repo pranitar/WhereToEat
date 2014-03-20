@@ -6,8 +6,8 @@ one:
   zip_code: 1
   cuisine: MyString
   area: MyString
-  hours: 
-  coordinates: 
+  longitude: 1.5
+  latitude: 1.5
 
 two:
   name: MyString
@@ -15,5 +15,5 @@ two:
   zip_code: 1
   cuisine: MyString
   area: MyString
-  hours: 
-  coordinates: 
+  longitude: 1.5
+  latitude: 1.5
