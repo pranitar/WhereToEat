@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Login
 
-gem 'devise'
+gem 'devise', github: 'plataformatec/devise', branch: 'master'
 
 # Front-end Gems
 
