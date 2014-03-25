@@ -20,7 +20,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'devise', github: 'plataformatec/devise', branch: 'master'
 
 # Front-end Gems
-
 gem 'bootstrap-sass'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
