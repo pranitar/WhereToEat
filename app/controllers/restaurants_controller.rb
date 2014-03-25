@@ -10,6 +10,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    @restaurant_reviews = RestaurantReview.where('restaurant_id = ?', @restaurant)
   end
 
   # GET /restaurants/new
@@ -69,6 +70,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :address, :zip_code, :cuisine, :area, :longitude, :latitude)
+      params.require(:restaurant).permit(:name, :street, :city, :state, :zip_code, :cuisine, :area, :longitude, :latitude)
     end
 end

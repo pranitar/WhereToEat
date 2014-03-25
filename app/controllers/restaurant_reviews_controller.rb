@@ -15,6 +15,8 @@ class RestaurantReviewsController < ApplicationController
   # GET /restaurant_reviews/new
   def new
     @restaurant_review = RestaurantReview.new
+    @restaurant_review.restaurant = Restaurant.find_by_id(params[:restaurant_id])
+    @restaurant_review.user = current_user
   end
 
   # GET /restaurant_reviews/1/edit
@@ -25,7 +27,6 @@ class RestaurantReviewsController < ApplicationController
   # POST /restaurant_reviews.json
   def create
     @restaurant_review = RestaurantReview.new(restaurant_review_params)
-
     respond_to do |format|
       if @restaurant_review.save
         format.html { redirect_to @restaurant_review, notice: 'Restaurant review was successfully created.' }
