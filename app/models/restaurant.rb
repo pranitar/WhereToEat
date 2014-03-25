@@ -7,7 +7,7 @@ class Restaurant < ActiveRecord::Base
 
 	#Validations
 	validates_presence_of :name, :address, :zip_code, :cuisine, :area
-	validates_numericality_of :zip_code, :only_integer => true
+	validates_format_of :zip, :with => /^\d{5}(-\d{4})?$/, :message => "should be in the form 12345 or 12345-1234"
 
 	#Scopes
 	scope :on_campus, -> {where(area: 'CMU')}
