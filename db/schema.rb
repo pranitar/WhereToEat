@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320185425) do
+ActiveRecord::Schema.define(version: 20140331011853) do
 
   create_table "item_reviews", force: true do |t|
     t.integer  "restaurant_id"
@@ -73,6 +73,10 @@ ActiveRecord::Schema.define(version: 20140320185425) do
     t.float    "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "accepts_dinex"
+    t.boolean  "accepts_cash"
+    t.boolean  "accepts_credit"
+    t.boolean  "accepts_plaid_cash"
   end
 
   create_table "users", force: true do |t|

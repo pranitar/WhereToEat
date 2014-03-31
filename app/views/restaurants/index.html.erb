@@ -1,5 +1,11 @@
-<h1>Listing restaurants</h1>
-<div class="container">
+<div class="container"><h1>Listing restaurants</h1>
+  <div class="well">
+    <h4>Filter By:</h4>
+      <button class="btn btn-default" id="cmu"> CMU </button>
+      <button class="btn btn-default" id="craig"> Craig Street </button>
+      <button class="btn btn-default" id="price"> Price </button>
+      <button class="btn btn-default" id="price"> Rating </button>
+  </div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -8,8 +14,7 @@
         <th>Zip code</th>
         <th>Cuisine</th>
         <th>Area</th>
-        <th>Longitude</th>
-        <th>Latitude</th>
+        <th>Address</th>
         <th></th>
         <th></th>
         <th></th>
@@ -24,10 +29,9 @@
           <td><%= restaurant.zip_code %></td>
           <td><%= restaurant.cuisine %></td>
           <td><%= restaurant.area %></td>
-          <td><%= restaurant.longitude %></td>
-          <td><%= restaurant.latitude %></td>
-          <td><%= link_to 'Show', restaurant %></td>
-          <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+          <td><%= restaurant.address %></td>
+          <td><%= link_to 'Show', restaurant, class: 'btn btn-default' %></td>
+          <td><%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'btn btn-default' %></td>
           <td><button class="btn btn-danger"><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
         </tr>
       <% end %>
@@ -36,5 +40,5 @@
 
   <br>
 
-  <%= link_to 'New Restaurant', new_restaurant_path %>
+  <%= link_to 'New Restaurant', new_restaurant_path, :class => 'btn btn-success' %>
 </div> 
