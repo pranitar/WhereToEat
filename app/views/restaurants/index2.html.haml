@@ -1,0 +1,37 @@
+.container
+  %h1 Listing restaurants
+  .well
+    %h4 Filter By:
+    %button#cmu.btn.btn-default CMU
+    %button#craig.btn.btn-default Craig Street
+    %button#price.btn.btn-default Price
+    %button#price.btn.btn-default Rating
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Name
+        %th Address
+        %th Zip
+        %th Cuisine
+        %th Area
+        %th Address
+        %th Price
+        %th Open
+        %th
+    %tbody
+      - @restaurants.each do |restaurant|
+        %tr
+          %td= link_to restaurant.name, restaurant
+          %td= restaurant.address
+          %td= restaurant.zip_code
+          %td= restaurant.cuisine
+          %td= restaurant.area
+          %td= restaurant.address
+          %td= '$' * restaurant.price
+          %td
+          %td= link_to 'Show', restaurant, class: 'btn btn-default'
+          %td= link_to 'Edit', edit_restaurant_path(restaurant), class: 'btn btn-default'
+          %td
+            %button.btn.btn-danger= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }
+  %br/
+  = link_to 'New Restaurant', new_restaurant_path, :class => 'btn btn-success'

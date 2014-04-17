@@ -1,37 +1,84 @@
-.container
-  %h1 Listing restaurants
-  .well
-    %h4 Filter By:
-    %button#cmu.btn.btn-default CMU
-    %button#craig.btn.btn-default Craig Street
-    %button#price.btn.btn-default Price
-    %button#price.btn.btn-default Rating
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Name
-        %th Address
-        %th Zip
-        %th Cuisine
-        %th Area
-        %th Address
-        %th Price
-        %th Open
-        %th
-    %tbody
-      - @restaurants.each do |restaurant|
-        %tr
-          %td= link_to restaurant.name, restaurant
-          %td= restaurant.address
-          %td= restaurant.zip_code
-          %td= restaurant.cuisine
-          %td= restaurant.area
-          %td= restaurant.address
-          %td= '$' * restaurant.price
-          %td
-          %td= link_to 'Show', restaurant, class: 'btn btn-default'
-          %td= link_to 'Edit', edit_restaurant_path(restaurant), class: 'btn btn-default'
-          %td
-            %button.btn.btn-danger= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }
-  %br/
-  = link_to 'New Restaurant', new_restaurant_path, :class => 'btn btn-success'
+!!!
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}/
+    %title W2E
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %link{href: "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css", rel: "stylesheet"}/
+    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
+      <script src="../bower_components/respond/dest/respond.min.js"></script>
+  %body
+    %h1 Listing restaurants
+    .well
+      %h4 Filter By:
+      %button#cmu.btn.btn-default CMU
+      %button#craig.btn.btn-default Craig Street
+      %button#price.btn.btn-default Price
+      %button#price.btn.btn-default Rating
+    .navbar.navbar-default
+      .navbar-header.pull-left
+        %a.navbar-brand{href: "#"} W2E
+      .navbar-form.pull-left
+        %input#search.form-control.col-lg-8{placeholder: "Search", type: "text"}/
+      #icon_cont.navbar-form.pull-right
+        %a#map_icon{href: "#"}
+      %a{href: "#"}
+        #filter.glyphicon.glyphicon-zoom-in{"data-target" => "#FilterWindow", "data-toggle" => "modal"}
+    #viewport
+      %ul.list-group
+        - @restaurants.each do |restaurant|
+          %li.list-group-item
+            = image_tag("placeholder.png")
+            %span.glyphicon.glyphicon-time.pull-right
+            .title
+              %h4= restaurant.name
+              %p= restaurant.address
+              %span.badge= restaurant.cuisine
+              %span
+                %h5= '$' * restaurant.price
+              %br/
+              %span.glyphicon.glyphicon-star.glyphicon-star-full
+              %span.glyphicon.glyphicon-star.glyphicon-star-full
+              %span.glyphicon.glyphicon-star.glyphicon-star-full
+              %span.glyphicon.glyphicon-star.glyphicon-star-empty
+              %span.glyphicon.glyphicon-star.glyphicon-star-empty
+
+    //#map-canvas.google-map-canvas -
+    #FilterWindow.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "modalLabel", role: "dialog", tabindex: "-1"}
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+            %h4#modalLabel.modal-title Filter
+          .modal-body
+            %h5.pull-left Price:
+            .text-center
+              .btn-group.btn-group-justified
+                .btn-group
+                  %button.btn.btn-default.btn-price{type: "button"} $
+                .btn-group
+                  %button.btn.btn-default.btn-price{type: "button"} $$
+                .btn-group
+                  %button.btn.btn-default.btn-price{type: "button"} $$$
+            %h5.pull-left Payment Method:
+            .text-center
+              .btn-group.btn-group-justified
+                .btn-group
+                  %button.btn.btn-default.btn-pay{type: "button"} Credit
+                .btn-group
+                  %button.btn.btn-default.btn-pay{type: "button"} Cash
+                .btn-group
+                  %button.btn.btn-default.btn-pay{type: "button"} Dinex
+                .btn-group
+                  %button.btn.btn-default.btn-pay{type: "button"} Block
+            .modal-footer
+              %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+              %button.btn.btn-primary{type: "button"} Apply
+          //%script{src: "https://code.jquery.com/jquery-1.10.2.min.js"}
+          //%script{src: "/assets/javascripts/bootstrap.min.js"}
+          //%script{src: "/assets/javascripts/bootswatch.js"}
+          //%script{src: "/assets/javascripts/bootstrap-slider.js"}
+          %script{src: "https://maps.googleapis.com/maps/api/js?sensor=false"}
+          //%script{src: "/assets/javascripts/wte.js"}
