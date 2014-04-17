@@ -6,6 +6,7 @@ class Restaurant < ActiveRecord::Base
 	has_many :restaurant_reviews
 	has_many :menus
 	has_many :items
+  has_many :business_hours
 
 	#Validations
 	validates_presence_of :name, :street, :city, :state, :zip_code, :cuisine, :area
@@ -32,4 +33,13 @@ class Restaurant < ActiveRecord::Base
 		['CMU', 'Craig Street']
 	end 
 
+  def is_open?
+    self.business_hours.where("open_at < ? and closed_at > ? and day = ?", Time.now.seconds_since_midnight, Time.now.seconds_since_midnight, Time.now.strftime("%A"))
+  end
+
+  def add_business_hour(open_at, close_at, day)
+    if (0..6).to_a.include?(day)
+      puts 'hi'
+    end
+  end
 end

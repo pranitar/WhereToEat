@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331011853) do
+ActiveRecord::Schema.define(version: 20140416042434) do
+
+  create_table "business_hours", force: true do |t|
+    t.integer  "open_at"
+    t.integer  "closed_at"
+    t.string   "day"
+    t.integer  "restaurant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "business_hours", ["restaurant_id"], name: "index_business_hours_on_restaurant_id"
 
   create_table "item_reviews", force: true do |t|
     t.integer  "restaurant_id"
@@ -77,6 +88,7 @@ ActiveRecord::Schema.define(version: 20140331011853) do
     t.boolean  "accepts_cash"
     t.boolean  "accepts_credit"
     t.boolean  "accepts_plaid_cash"
+    t.integer  "price"
   end
 
   create_table "users", force: true do |t|

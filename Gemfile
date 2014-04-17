@@ -21,6 +21,9 @@ gem 'devise', github: 'plataformatec/devise', branch: 'master'
 
 # Front-end Gems
 gem 'bootstrap-sass'
+gem 'haml'
+gem 'haml-rails'
+gem 'simple_form'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

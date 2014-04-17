@@ -1,0 +1,36 @@
+.container
+  .row
+    .col-md-8
+      %p#notice= notice
+      %p
+        %strong Name:
+        = @restaurant.name
+      %p
+        %strong Address:
+        = @restaurant.address
+      %p
+        %strong Zip code:
+        = @restaurant.zip_code
+      %p
+        %strong Cuisine:
+        = @restaurant.cuisine
+      %p
+        %strong Area:
+        = @restaurant.area
+      %p
+        %strong Price:
+        = '$' * @restaurant.price
+      %p
+        %strong Longitude:
+        = @restaurant.longitude
+      %p
+        %strong Latitude:
+        = @restaurant.latitude
+      .well
+        = render 'reviews'
+      %button.btn.btn-default= link_to "Add Review", new_restaurant_review_path(:restaurant_id => @restaurant)
+      = link_to 'Edit', edit_restaurant_path(@restaurant)
+      |
+      \#{link_to 'Back', restaurants_path}
+    .col-md-4
+      = image_tag @restaurant.create_map_link
