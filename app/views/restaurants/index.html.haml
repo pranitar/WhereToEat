@@ -17,15 +17,7 @@
       %button#craig.btn.btn-default Craig Street
       %button#price.btn.btn-default Price
       %button#price.btn.btn-default Rating
-    .navbar.navbar-default
-      .navbar-header.pull-left
-        %a.navbar-brand{href: "#"} W2E
-      .navbar-form.pull-left
-        %input#search.form-control.col-lg-8{placeholder: "Search", type: "text"}/
-      #icon_cont.navbar-form.pull-right
-        %a#map_icon{href: "#"}
-      %a{href: "#"}
-        #filter.glyphicon.glyphicon-zoom-in{"data-target" => "#FilterWindow", "data-toggle" => "modal"}
+    
     #viewport
       %ul.list-group
         - @restaurants.each do |restaurant|
