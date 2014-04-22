@@ -9,33 +9,67 @@
     /[if lt IE 9]
       <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
       <script src="../bower_components/respond/dest/respond.min.js"></script>
-  %body
-    %h1 Listing restaurants
-    .well
-      %h4 Filter By:
-      %button#cmu.btn.btn-default CMU
-      %button#craig.btn.btn-default Craig Street
-      %button#price.btn.btn-default Price
-      %button#price.btn.btn-default Rating
+  %body 
+    %ul.nav.nav-tabs{style: "padding-top: 50px;"}
+      %li.active
+        %a{"data-toggle" => "tab", href: "#home"} List
+      %li
+        %a{"data-toggle" => "tab", href: "#profile"} Map
+    #myTabContent.tab-content
+      #home.tab-pane.fade.active.in
+        %ul.nav.nav-pills
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              Filter
+              %span.caret
+            %ul.dropdown-menu.centerDropdown
+              %li
+                %a{href: "#"} Price
+              %li
+                %a{href: "#"} Distance
+              %li
+                %a{href: "#"} Waiting time
+              %li
+                %a{href: "#"} Rating
+        #viewport
+          %ul.list-group
+            - @restaurants.each do |restaurant|
+              %li.list-group-item
+
+                =image_tag  "placeholder.png", :class => "thumbnail pull-left"
+                %span.glyphicon.glyphicon-time.pull-right
+                .title
+                  %h4= restaurant.name
+                  %p= restaurant.address
+                  %span.badge= restaurant.cuisine
+                  %span
+                    %h5= '$' * restaurant.price
+                  %br
+                  %span.glyphicon.glyphicon-star.glyphicon-star-full
+                  %span.glyphicon.glyphicon-star.glyphicon-star-full
+                  %span.glyphicon.glyphicon-star.glyphicon-star-full
+                  %span.glyphicon.glyphicon-star.glyphicon-star-empty
+                  %span.glyphicon.glyphicon-star.glyphicon-star-empty
+
+      #profile.tab-pane.fade
+        %ul.nav.nav-pills
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              Filter
+              %span.caret
+            %ul.dropdown-menu.centerDropdown
+              %li
+                %a{href: "#"} Price
+              %li
+                %a{href: "#"} Distance
+              %li
+                %a{href: "#"} Waiting time
+              %li
+                %a{href: "#"} Rating
+        %p MAP HERE
+
+
     
-    #viewport
-      %ul.list-group
-        - @restaurants.each do |restaurant|
-          %li.list-group-item
-            = image_tag("placeholder.png")
-            %span.glyphicon.glyphicon-time.pull-right
-            .title
-              %h4= restaurant.name
-              %p= restaurant.address
-              %span.badge= restaurant.cuisine
-              %span
-                %h5= '$' * restaurant.price
-              %br/
-              %span.glyphicon.glyphicon-star.glyphicon-star-full
-              %span.glyphicon.glyphicon-star.glyphicon-star-full
-              %span.glyphicon.glyphicon-star.glyphicon-star-full
-              %span.glyphicon.glyphicon-star.glyphicon-star-empty
-              %span.glyphicon.glyphicon-star.glyphicon-star-empty
 
     //#map-canvas.google-map-canvas -
     #FilterWindow.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "modalLabel", role: "dialog", tabindex: "-1"}
@@ -71,6 +105,6 @@
           //%script{src: "https://code.jquery.com/jquery-1.10.2.min.js"}
           //%script{src: "/assets/javascripts/bootstrap.min.js"}
           //%script{src: "/assets/javascripts/bootswatch.js"}
-          //%script{src: "/assets/javascripts/bootstrap-slider.js"}
+         
           %script{src: "https://maps.googleapis.com/maps/api/js?sensor=false"}
           //%script{src: "/assets/javascripts/wte.js"}
