@@ -19,8 +19,7 @@ class Restaurant < ActiveRecord::Base
 	geocoded_by :address
 
 	def address 
-		#[street, city, state, zip_code].compact.join(', ')
-		[street].compact.join(', ')
+		[street, city, state, zip_code].compact.join(', ')
 	end 
 
   def create_map_link(zoom=12,width=800,height=800)
