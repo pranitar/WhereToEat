@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416042434) do
+ActiveRecord::Schema.define(version: 20140423001711) do
 
   create_table "business_hours", force: true do |t|
     t.integer  "open_at"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20140416042434) do
     t.boolean  "accepts_credit"
     t.boolean  "accepts_plaid_cash"
     t.integer  "price"
+    t.integer  "waiting_time"
   end
 
   create_table "users", force: true do |t|

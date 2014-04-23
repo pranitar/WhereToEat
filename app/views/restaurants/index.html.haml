@@ -36,11 +36,9 @@
             - @restaurants.each do |restaurant|
               %a.list-group-item{ :href => restaurant_url(restaurant.id) } 
                 %span.glyphicon.glyphicon-time.pull-right
-                %span
-                  =image_tag  "placeholder.png", :class => "thumbnail pull-left"
-                %span.title
+                .title
                   %h4= restaurant.name
-                  %p.addre= restaurant.address
+                  %p= restaurant.address
                   %span.badge= restaurant.cuisine
                   %span
                     %h5= '$' * restaurant.price
@@ -50,7 +48,6 @@
                   %span.glyphicon.glyphicon-star.glyphicon-star-full
                   %span.glyphicon.glyphicon-star.glyphicon-star-empty
                   %span.glyphicon.glyphicon-star.glyphicon-star-empty
-                  %span.badge.pull-right.small-badge  10 min
 
       #profile.tab-pane.fade
         %ul.nav.nav-pills
@@ -69,7 +66,6 @@
                 %a{href: "#"} Rating
         %div
           #map-canvas
-
 
 
     
@@ -106,5 +102,3 @@
               %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
               %button.btn.btn-primary{type: "button"} Apply
       %script{src: "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js", type: "text/javascript"}
-
-         
