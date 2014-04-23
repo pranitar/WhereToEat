@@ -14,11 +14,17 @@ class Restaurant < ActiveRecord::Base
 
 	#Scopes
 	scope :on_campus, -> {where(area: 'CMU')}
-  scope :price, -> {order(:price)}
-  scope :rating, -> {order(:rating)}
+  scope :by_price, -> {order(:price)}
+  scope :by_rating, -> {order(:rating)}
+  scope :by_waiting_time, -> {order(:waiting_time)}
 
 	#Geocoding
 	geocoded_by :address
+
+  #Filter by distance
+  def by_distance(lat, long)
+    Restaurant.order(Geocoder::calculations.distance_between([lat,long], [latitude,longitude]))
+  end
 
 	def address 
 		[street, city, state, zip_code].compact.join(', ')

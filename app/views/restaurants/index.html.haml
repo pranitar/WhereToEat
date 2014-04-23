@@ -24,15 +24,15 @@
               %span.caret
             %ul.dropdown-menu.centerMe
               %li
-                %a{href: "#"} Price
+                %a.filter_button{filter_type: "price"} Price
               %li
-                %a{href: "#"} Distance
+                %a.filter_button{filter_type: "distance"} Distance
               %li
-                %a{href: "#"} Waiting time
+                %a.filter_button{filter_type: "time"} Waiting time
               %li
-                %a{href: "#"} Rating
+                %a.filter_button{filter_type: "rating"} Rating
         #viewport
-          %ul.list-group
+          %ul.list-group{id: 'restaurants'}
             - @restaurants.each do |restaurant|
               %a.list-group-item{ :href => restaurant_url(restaurant.id) } 
                 %span.glyphicon.glyphicon-time.pull-right
@@ -57,13 +57,13 @@
               %span.caret
             %ul.dropdown-menu.centerMe
               %li
-                %a{href: "#"} Price
+                %a{href: "#", id: "price-filter"} Price
               %li
-                %a{href: "#"} Distance
+                %a{href: "#", id: "distance-filter"} Distance
               %li
-                %a{href: "#"} Waiting time
+                %a#time-filter{href: "#", id: "time-filter"} Waiting time
               %li
-                %a{href: "#"} Rating
+                %a#rating-filter{href: "#", id: "rating-filter"} Rating
         %div
           #map-canvas
 
