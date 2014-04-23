@@ -14,6 +14,8 @@ class Restaurant < ActiveRecord::Base
 
 	#Scopes
 	scope :on_campus, -> {where(area: 'CMU')}
+  scope :price, -> {order(:price)}
+  scope :rating, -> {order(:rating)}
 
 	#Geocoding
 	geocoded_by :address

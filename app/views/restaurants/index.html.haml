@@ -34,9 +34,7 @@
         #viewport
           %ul.list-group
             - @restaurants.each do |restaurant|
-              %li.list-group-item
-
-                =image_tag  "placeholder.png", :class => "thumbnail pull-left"
+              %a.list-group-item{ :href => restaurant_url(restaurant.id) } 
                 %span.glyphicon.glyphicon-time.pull-right
                 .title
                   %h4= restaurant.name
@@ -66,7 +64,8 @@
                 %a{href: "#"} Waiting time
               %li
                 %a{href: "#"} Rating
-        %p MAP HERE
+        %div
+          #map-canvas
 
 
     
@@ -102,9 +101,4 @@
             .modal-footer
               %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
               %button.btn.btn-primary{type: "button"} Apply
-          //%script{src: "https://code.jquery.com/jquery-1.10.2.min.js"}
-          //%script{src: "/assets/javascripts/bootstrap.min.js"}
-          //%script{src: "/assets/javascripts/bootswatch.js"}
-         
-          %script{src: "https://maps.googleapis.com/maps/api/js?sensor=false"}
-          //%script{src: "/assets/javascripts/wte.js"}
+      %script{src: "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js", type: "text/javascript"}

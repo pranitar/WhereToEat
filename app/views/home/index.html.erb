@@ -1,17 +1,19 @@
-<div class="container">
-	
-	
-	<div class="navbar navbar-default navbar-fixed-top">
-	    <div class="navbar-header pull-left">
-	      <a class="navbar-brand" href="#"><h4>W2E</h4></a>
-	    </div>
-	    <div class="navbar-form pull-left">
-	      <input type="text" class="form-control col-lg-8 " placeholder="Search" id="search">
-	    </div>
-	</div>	
-
-	<div class="col-md-8">
-		<%= render file: 'restaurants/index' %>
-	</div
-
-</div>
+<head>
+	<%= stylesheet_link_tag "application", :media => "all" %>	 
+	<body>
+		<div class="container">
+			<div class="navbar navbar-default navbar-fixed-top">
+			    <div class="navbar-header pull-left">
+			      <a class="navbar-brand" href="#"><h4>W2E</h4></a>
+			    </div>
+			    <div class="navbar-form pull-left">
+			      <input type="text" class="form-control col-lg-8 " placeholder="Search" id="search">
+			    </div>
+			</div>	
+			<div class="col-md-8">
+				<%= render file: 'restaurants/index' %>
+				<%= yield :javascripts %>
+			</div>
+		</div>
+	</body>
+</head>
