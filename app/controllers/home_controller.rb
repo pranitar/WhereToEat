@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   		puts @restaurants
   	elsif params[:filter] == 'distance'
   		puts 'distance'
-  		@restaurants = Restaurant.by_distance()
+  		@restaurants = Restaurant.by_distance(params[:latitude], params[:longitude])
   	elsif params[:filter] == 'waiting_time'
   		puts 'waiting_time'
   		@restaurants = Restaurant.by_waiting_time

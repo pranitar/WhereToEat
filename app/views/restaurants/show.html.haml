@@ -1,6 +1,6 @@
 .container
   .row
-    .col-md-8
+    .col-lg-8
       %p#notice= notice
       %p
         %strong Name:
@@ -31,6 +31,6 @@
       %button.btn.btn-default= link_to "Add Review", new_restaurant_review_path(:restaurant_id => @restaurant)
       = link_to 'Edit', edit_restaurant_path(@restaurant)
       |
-      \#{link_to 'Back', restaurants_path}
+      \#{link_to 'Back', home_path}
     .col-md-4
       = image_tag @restaurant.create_map_link

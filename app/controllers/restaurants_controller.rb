@@ -16,6 +16,11 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/new
   def new
     @restaurant = Restaurant.new
+    7.times do |i|
+      r = @restaurant.business_hours.build
+      puts r.inspect 
+      r.day = BusinessHour::Days[i]
+    end
   end
 
   # GET /restaurants/1/edit
@@ -84,7 +89,8 @@ class RestaurantsController < ApplicationController
         :accepts_credit,
         :accepts_credit,
         :longitude, 
-        :latitude
+        :latitude,
+        business_hours_attributes: [:day, :open_at, :closed_at]
       )
     end
 end

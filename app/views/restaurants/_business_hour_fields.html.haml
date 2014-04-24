@@ -1,0 +1,10 @@
+%h1 
+  = f.object.day
+  .form-group
+    = f.label :open_at
+    %br/
+    = f.time_field :open_at
+  .form-group
+    = f.label :closed_at
+    %br/
+    = f.time_field :closed_at

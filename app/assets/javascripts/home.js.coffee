@@ -6,6 +6,7 @@ String::multi = (num) ->
 
 window.filter_restaurants =
   submit_filter: (filter_type) ->
+    console.log(filter_type)
     $.ajax({
         type: "POST",
         url: "/home/filter",

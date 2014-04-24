@@ -1,0 +1,28 @@
+<%= simple_nested_form_for @restaurant do |restaurant_form| %>
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@restaurant.errors.count, "error") %>
+        prohibited this restaurant from being saved:
+      </h2>
+      <ul>
+        <% @restaurant.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= render :partial => "restaurant_fields", :locals => {:f => restaurant_form} %>
+  <%= restaurant_form.simple_fields_for :business_hours do |hours_form| %>
+    <%= render :partial => "business_hour_fields", :locals => {:f => hours_form} %>
+  <% end %>
+    <p>
+      <%= restaurant_form.link_to_add "Add Hours", :business_hours %>
+    </p>
+
+  <div class="actions">
+    <%= restaurant_form.submit :class => 'btn btn-default' %>
+  </div>
+<% end %>

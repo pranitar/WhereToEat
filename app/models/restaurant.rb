@@ -2,11 +2,14 @@ class Restaurant < ActiveRecord::Base
 
 	after_validation :geocode, if: ->(obj){ obj.address.present?}
 
+  has_many :business_hours
+  accepts_nested_attributes_for :business_hours
+
 	#Associations
 	has_many :restaurant_reviews
 	has_many :menus
 	has_many :items
-  has_many :business_hours
+
 
 	#Validations
 	validates_presence_of :name, :street, :city, :state, :zip_code, :cuisine, :area
