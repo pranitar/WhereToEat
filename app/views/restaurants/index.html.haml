@@ -12,11 +12,11 @@
   %body 
     %ul.nav.nav-tabs{style: "padding-top: 50px;"}
       %li.active
-        %a{"data-toggle" => "tab", href: "#home"} List
+        %a{"data-toggle" => "tab", href: "#list", "data-number" => "1"} List
       %li
-        %a{"data-toggle" => "tab", href: "#profile"} Map
+        %a{"data-toggle" => "tab", href: "#map", "data-number" => "2"} Map
     #myTabContent.tab-content
-      #home.tab-pane.fade.active.in
+      #list.tab-pane.fade.active.in
         %ul.nav.nav-pills
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
@@ -34,10 +34,17 @@
         #viewport
           %ul.list-group{id: 'restaurants'}
             - @restaurants.each do |restaurant|
-              %a.list-group-item{ :href => restaurant_url(restaurant.id) } 
-                %span.glyphicon.glyphicon-time.pull-right
+              %a.list-group-item{ :href => restaurant_url(restaurant.id)} 
                 .title
                   %h4= restaurant.name
+                  - if restaurant.accepts_dinex
+                    %span.badge.small-badge.pull-right.payment  Dinex
+                  - if restaurant.accepts_cash
+                    %span.badge.small-badge.pull-right.payment Cash
+                  - if restaurant.accepts_credit
+                    %span.badge.small-badge.pull-right.payment  Credit
+                  - if restaurant.accepts_plaid_cash
+                    %span.badge.small-badge.pull-right.payment  Plaid Cash
                   %p= restaurant.address
                   %span.badge= restaurant.cuisine
                   %span
@@ -48,8 +55,9 @@
                   %span.glyphicon.glyphicon-star.glyphicon-star-full
                   %span.glyphicon.glyphicon-star.glyphicon-star-empty
                   %span.glyphicon.glyphicon-star.glyphicon-star-empty
+                  %span.badge.glyphicon.glyphicon-time.pull-right.small-badge.time 10min
 
-      #profile.tab-pane.fade
+      #map.tab-pane.fade
         %ul.nav.nav-pills
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
@@ -64,8 +72,8 @@
                 %a#time-filter{href: "#", id: "time-filter"} Waiting time
               %li
                 %a#rating-filter{href: "#", id: "rating-filter"} Rating
-        %div
-          #map-canvas
+    %div
+      #map-canvas
 
 
     

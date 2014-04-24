@@ -55,8 +55,21 @@ p {
   border: 0px;
 }
 .list-group{
-	margin: 3px;
-	width: 100%-6px  !important;
+	margin: 0px;
+	width: 100%px  !important;
+}
+
+
+.list-group-item {
+    background-image: 
+    	linear-gradient( to right, 
+	     	rgba(0, 0, 0, 0.75),
+	     	rgba(255, 255, 255, 0)
+    	),
+    	url('pic.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    border-color: white;
 }
 
 .thumbnail {
@@ -85,13 +98,7 @@ p {
 }
 
 
-.glyphicon-time {
-	margin-left: 0px;
-	margin-right: -10px;
-	margin-top: 25px;
-	margin-bottom: 10px;
-	font-size: 35px;
-}
+
 
 .glyphicon-remove-circle {
 	margin-top: 40px;
@@ -113,15 +120,6 @@ p {
 }
 
 
-#map-canvas {
-	
-	position: absolute;
-	width: calc(100%);
-	height: calc(130%);
-	top: 52px;
-	z-index: 0;
-	border-radius: 0px;
-}
 
 .modal-body {
 	padding-top: 3px;
@@ -133,7 +131,7 @@ button {
 
 
 
-.col-centered{
+.col-centered {
     float: none;
     margin: 0 auto;
 }
@@ -149,6 +147,11 @@ button {
 .nav-tabs>li {
     width:50%;
     text-align: center;
+    padding: 0px;
+}
+.nav-tabs {
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .nav-pills>li {
@@ -163,29 +166,47 @@ button {
 }
 
 .col-md-8 {
-	padding: 2px;
+	padding: 0px;
 }
 
-.glyphicon-time {
-	font-size: 20px;
-	right: 10px;
-	
-}
 
 .title {
 	padding-top: -15px;
+	color: white;
+
 }
 
 .address {
     width: 250px;
 }
 
-.small-badge {
+.time {
 	margin-right: -10px;
+	top: 13px !important;
+	position: relative;
+	right: -14px !important;
 }
 
 #map-canvas {
-	top: 140px !important;
+	top: 0px !important;
 	width: 100% !important;
-	height: 1000px !important;
+	height: 400px!important;
+	visibility: hidden;
+}
+
+.payment {
+	right: -10px;
+	position: relative;
+	top: -25px;
+	margin-left: 2px;
+	background-color: #80B743;
+	color: white;
+}
+
+.glyphicon.glyphicon-time{
+ 	margin-right: 3px;
+}
+
+.cont {
+	font-size: 0px;
 }

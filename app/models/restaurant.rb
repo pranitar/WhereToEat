@@ -30,7 +30,8 @@ class Restaurant < ActiveRecord::Base
   end
 
 	def address 
-		[street, city, state, zip_code].compact.join(', ')
+		#[street, city, state, zip_code].compact.join(', ')
+    [street].compact.join(', ')
 	end 
 
   def create_map_link(zoom=12,width=800,height=800)
