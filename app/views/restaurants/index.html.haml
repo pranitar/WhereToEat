@@ -12,11 +12,11 @@
   %body 
     %ul.nav.nav-tabs{style: "padding-top: 50px;"}
       %li.active
-        %a{"data-toggle" => "tab", href: "#home"} List
+        %a{"data-toggle" => "tab", href: "#list", "data-number" => "1"} List
       %li
-        %a{"data-toggle" => "tab", href: "#profile"} Map
+        %a{"data-toggle" => "tab", href: "#map", "data-number" => "2"} Map
     #myTabContent.tab-content
-      #home.tab-pane.fade.active.in
+      #list.tab-pane.fade.active.in
         %ul.nav.nav-pills
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
@@ -57,7 +57,7 @@
                   %span.glyphicon.glyphicon-star.glyphicon-star-empty
                   %span.badge.glyphicon.glyphicon-time.pull-right.small-badge.time 10min
 
-      #profile.tab-pane.fade
+      #map.tab-pane.fade
         %ul.nav.nav-pills
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
@@ -72,8 +72,8 @@
                 %a#time-filter{href: "#", id: "time-filter"} Waiting time
               %li
                 %a#rating-filter{href: "#", id: "rating-filter"} Rating
-        %div
-          #map-canvas
+    %div
+      #map-canvas
 
 
     
