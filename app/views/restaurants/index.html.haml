@@ -34,10 +34,19 @@
         #viewport
           %ul.list-group{id: 'restaurants'}
             - @restaurants.each do |restaurant|
-              %a.list-group-item{ :href => restaurant_url(restaurant.id) } 
-                %span.glyphicon.glyphicon-time.pull-right
+              %a.list-group-item{ :href => restaurant_url(restaurant.id)} 
+                %span
+                  =image_tag  "placeholder.png", :class => "thumbnail pull-left"
                 .title
                   %h4= restaurant.name
+                  - if restaurant.accepts_dinex
+                    %span.badge.small-badge.pull-right.payment  Dinex
+                  - if restaurant.accepts_cash
+                    %span.badge.small-badge.pull-right.payment Cash
+                  - if restaurant.accepts_credit
+                    %span.badge.small-badge.pull-right.payment  Credit
+                  - if restaurant.accepts_plaid_cash
+                    %span.badge.small-badge.pull-right.payment  Plaid Cash
                   %p= restaurant.address
                   %span.badge= restaurant.cuisine
                   %span
@@ -48,6 +57,7 @@
                   %span.glyphicon.glyphicon-star.glyphicon-star-full
                   %span.glyphicon.glyphicon-star.glyphicon-star-empty
                   %span.glyphicon.glyphicon-star.glyphicon-star-empty
+                  %span.badge.glyphicon.glyphicon-time.pull-right.small-badge.time 10min
 
       #profile.tab-pane.fade
         %ul.nav.nav-pills
