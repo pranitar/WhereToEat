@@ -35,8 +35,6 @@
           %ul.list-group{id: 'restaurants'}
             - @restaurants.each do |restaurant|
               %a.list-group-item{ :href => restaurant_url(restaurant.id)} 
-                %span
-                  =image_tag  "placeholder.png", :class => "thumbnail pull-left"
                 .title
                   %h4= restaurant.name
                   - if restaurant.accepts_dinex
