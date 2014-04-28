@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :add_coordinates]
 
   # GET /users
   # GET /users.json
@@ -37,6 +37,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def add_coordinates
+    puts user_params 
+    if params[:longitude] && params[:latitude]
+      @user.update(:longitude => user_params[:longitude], :latitude => user_params[:latitude])
+    end
+    respond_to do |format|
+      format.html {render :nothing => true }
+    end
+  end
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
@@ -69,6 +79,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :age, :location)
+      params.require(:user).permit(:name, :age, :location, :longitude, :latitude)
     end
 end

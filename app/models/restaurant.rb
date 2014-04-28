@@ -1,5 +1,4 @@
 class Restaurant < ActiveRecord::Base
-
 	after_validation :geocode, if: ->(obj){ obj.address.present?}
 
   has_many :business_hours
@@ -26,8 +25,12 @@ class Restaurant < ActiveRecord::Base
 
   #Filter by distance
   def by_distance(lat, long)
-    Restaurant.order(Geocoder::calculations.distance_between([lat,long], [latitude,longitude]))
+    Restaurant.order(Geocoder::Calculations.distance_between([lat,long], [latitude,longitude]))
   end
+
+  def distance(lat, long)
+    Geocoder::Calculations.distance_between([lat,long], [latitude,longitude])
+  end 
 
 	def address 
 		#[street, city, state, zip_code].compact.join(', ')

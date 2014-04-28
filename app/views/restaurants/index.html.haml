@@ -10,6 +10,16 @@
       <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
       <script src="../bower_components/respond/dest/respond.min.js"></script>
   %body 
+    %div
+      %h3
+        You are at
+        %span#location
+    #user{"data-id" => current_user.id} 
+    %div
+      %input#locationNow{type: "button", value: "Get location now!"}/
+      %input#startWatchLocation{type: "button", value: "Start watching location"}/
+      %input#endWatchLocation{type: "button", value: "Stop watching location"}/
+    #updateDiv
     %ul.nav.nav-tabs{style: "padding-top: 50px;"}
       %li.active
         %a{"data-toggle" => "tab", href: "#list", "data-number" => "1"} List
@@ -31,6 +41,8 @@
                 %a.filter_button{filter_type: "time"} Waiting time
               %li
                 %a.filter_button{filter_type: "rating"} Rating
+              %li
+                %a.filter_button{filter_type: "cuisine"} Cuisine
         #viewport
           %ul.list-group{id: 'restaurants'}
             - @restaurants.each do |restaurant|
@@ -46,6 +58,8 @@
                   - if restaurant.accepts_plaid_cash
                     %span.badge.small-badge.pull-right.payment  Plaid Cash
                   %p= restaurant.address
+                  - if current_user.latitude && current_user.longitude
+                    %div= restaurant.distance(current_user.latitude, current_user.longitude).round(2).to_s + " Miles"
                   %span.badge= restaurant.cuisine
                   %span
                     %h5= '$' * restaurant.price
@@ -55,7 +69,7 @@
                   %span.glyphicon.glyphicon-star.glyphicon-star-full
                   %span.glyphicon.glyphicon-star.glyphicon-star-empty
                   %span.glyphicon.glyphicon-star.glyphicon-star-empty 
-                  - if restaurant.is_open? 
+                  - if restaurant
                     %span.badge.glyphicon.glyphicon-time.pull-right.small-badge.time
                       Open Now
                   - else 
@@ -113,3 +127,70 @@
               %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
               %button.btn.btn-primary{type: "button"} Apply
       %script{src: "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js", type: "text/javascript"}
+
+:javascript 
+
+var id;
+var nop = function() { };
+
+  if (!navigator.geolocation) {
+      navigator.geolocation = {};
+  }
+  if (!navigator.geolocation.getCurrentPosition) {
+      navigator.geolocation.getCurrentPosition = nop;
+  }
+
+  document.getElementById('locationNow').onclick = function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      document.getElementById('location').innerHTML = position.coords.latitude + ", " + position.coords.longitude;
+      alert(position);
+      id = $('#user').data('id');
+      $.ajax({
+        type: "PATCH",
+        url: "users/add_coordinates/" + id,
+        data: {user: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+          }
+        },
+        success: function(data) {
+          return console.log(data);
+        },
+        error: function(data) {
+          return console.log(data);
+        }
+      });
+
+    });
+  }
+  
+  function successCallback(position) {
+    document.getElementById('location').innerHTML = position.coords.latitude + ", " + position.coords.longitude + ": last updated at " + position.timestamp;
+    var updateDiv = document.getElementById('updateDiv')
+    updateDiv.style.visibility = 'visible';
+    setTimeout(function() {
+      updateDiv.style.visibility = 'hidden';
+    }, 200);
+  }
+
+  function errCallback(err) {
+      var message = err.message;
+      var code = err.code;
+      document.getElementById('location').innerHTML = "Erorr: " + code + ", " + err.message;
+      //code = 0 => UNKNOWN_ERROR, 1 => PERMISSION_DENIED, 2 => POSITION_UNAVAILABLE, 3 => TIMEOUT
+  }
+
+  // optional for geolocation.watchPosition
+  var options = { 
+      enableHighAccuracy: true,
+      maximumAge: 30000,
+      timeout: 27000
+  };
+
+  var watchId;
+  document.getElementById('startWatchLocation').onclick = function() {
+    watchId = navigator.geolocation.watchPosition(successCallback, errCallback, options);
+  };
+  document.getElementById('endWatchLocation').onclick = function() {
+    navigator.geolocation.clearWatch(watchId);
+  };
