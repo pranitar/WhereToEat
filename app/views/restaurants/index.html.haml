@@ -34,7 +34,7 @@
         #viewport
           %ul.list-group{id: 'restaurants'}
             - @restaurants.each do |restaurant|
-              %a.list-group-item{ :href => restaurant_url(restaurant.id)} 
+              %a.list-group-item{ :href => restaurant_url(restaurant.id), :class => "#{restaurant.area.downcase}"}
                 .title
                   %h4= restaurant.name
                   - if restaurant.accepts_dinex
@@ -55,6 +55,12 @@
                   %span.glyphicon.glyphicon-star.glyphicon-star-full
                   %span.glyphicon.glyphicon-star.glyphicon-star-empty
                   %span.glyphicon.glyphicon-star.glyphicon-star-empty 
+                  - if restaurant.is_open? 
+                    %span.badge.glyphicon.glyphicon-time.pull-right.small-badge.time
+                      Open Now
+                  - else 
+                    %span.badge.glyphicon.glyphicon-time.pull-right.small-badge.time
+                      Closed
                   %span.badge.glyphicon.glyphicon-time.pull-right.small-badge.time 10min
 
       #map.tab-pane.fade

@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20140423001711) do
 
   create_table "business_hours", force: true do |t|
-    t.integer  "open_at"
-    t.integer  "closed_at"
+    t.time     "open_at"
+    t.time     "closed_at"
     t.string   "day"
     t.integer  "restaurant_id"
     t.datetime "created_at"

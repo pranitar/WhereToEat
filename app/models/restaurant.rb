@@ -46,8 +46,13 @@ class Restaurant < ActiveRecord::Base
 	end 
 
   def is_open?
-    self.business_hours.where("open_at < ? and closed_at > ? and day = ?", Time.now.seconds_since_midnight, Time.now.seconds_since_midnight, Time.now.strftime("%A"))
-  end
+    business_hour = self.business_hours.where("day = ?", Time.now.strftime("%A")).first
+    puts business_hour
+    #now see if current time is in between open at and closed at
+    open_at_today = Time.now.change({:hour => business_hour.open_at.hour , :min => business_hour.open_at.hour})
+    closed_at_today = Time.now.change({:hour => business_hour.closed_at.hour , :min => business_hour.closed_at.hour})
+    return open_at_today < Time.now && Time.now < closed_at_today
+  end 
 
   def add_business_hour(open_at, close_at, day)
     if (0..6).to_a.include?(day)

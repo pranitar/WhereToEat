@@ -8,3 +8,4 @@
     = f.label :closed_at
     %br/
     = f.time_field :closed_at
+    = f.input :day, :as => :hidden, :input_html => {:value => f.object.day}

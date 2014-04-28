@@ -20,6 +20,7 @@ window.filter_restaurants =
             money = "$"
             restaurant = JSON.parse(restaurants[i])
             element = $("<a>").addClass('list-group-item').attr("href", "http://localhost:3000/restaurants/" + restaurant.id)
+            element.addClass(restaurant.area.toLowerCase())
             content = $("<div>").addClass('title')
             content.append($("<h4>").html(restaurant.name))
             content.append($("<p>").html(restaurant.street + ", " + restaurant.city + ", " + restaurant.state + ", " + restaurant.zip_code))
