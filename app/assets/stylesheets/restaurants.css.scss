@@ -25,6 +25,7 @@ h4 {
 }
 p {
 	margin-bottom: 4px;
+	font-size: 1.0em;
 }
 
  .navbar-form {
@@ -61,27 +62,15 @@ p {
 
 
 .list-group-item {
+    background-image: 
+    	linear-gradient( to right, 
+	     	rgba(0, 0, 0, 0.75),
+	     	rgba(255, 255, 255, 0)
+    	),
+    	url('pic.jpg');
     background-repeat: no-repeat;
     background-size:cover;
     border-color: white;
-}
-
-.cmu {
-	background-image: 
-    	linear-gradient( to right, 
-	     	rgba(0, 0, 0, 0.75),
-	     	rgba(255, 255, 255, 0)
-    	),
-    	url('cmu.jpg');
-}
-
-.craig {
-	background-image: 
-    	linear-gradient( to right, 
-	     	rgba(0, 0, 0, 0.75),
-	     	rgba(255, 255, 255, 0)
-    	),
-    	url('craig.jpg');
 }
 
 .thumbnail {
@@ -108,9 +97,6 @@ p {
 	margin-right: 5px;
 	border: 0px;
 }
-
-
-
 
 .glyphicon-remove-circle {
 	margin-top: 40px;
@@ -202,7 +188,7 @@ button {
 #map-canvas {
 	top: 0px !important;
 	width: 100% !important;
-	height: 320px!important;
+	height: 400px !important;
 	visibility: hidden;
 }
 
@@ -223,14 +209,33 @@ button {
 	font-size: 0px;
 }
 
-.popup
-    {
-        font-size:16px !important;
-        width: 250px;
-    } 
+#text{
+	font-size: 16pt;
+}
 
-/*.popup:before {
-  font-family: "Glyphicons Halflings";
-  content: "\e086";
-}*/
+#name{
+	color: #f28500;
+	font-size: 60pt;
+}
 
+#description{
+	font-size: 30pt;
+}
+
+#restaurantintro{
+	margin-left: 10%;
+}
+
+#restaurantaddress{
+	font-size: 31pt;
+	margin-left: 5%;
+}
+
+button.btn.btn-default{
+	width:100%;
+	font-size: 20pt;
+}
+
+tbody{
+	font-size: 20pt;
+}
