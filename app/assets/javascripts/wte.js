@@ -15,6 +15,8 @@ if (!isOpen) {
   markerColor = '#CCCCCC';
 }
 
+var timeAgo;
+
 console.log("markerColor "+markerColor);
 
 $.getJSON('users.json', function(data){
@@ -37,14 +39,19 @@ $.getJSON('users.json', function(data){
     marker.setMap(map);
    // map.setCenter(marker.position);
     google.maps.event.addListener(marker, 'click', function() {
-      var contentwindow = "<a href='/restaurants/"+val.id+"<span class='popup'> " +val.name + "</span></a>";
+      var contentwindow = $("<a>").attr("href", "/users/"+val.id)
 
+      var content = $("<span>").addClass("popup").html(val.name + " - ")
+      var timeago = $("<abbr>").addClass("timeago").attr("title", jQuery.timeago(val.location_updated_at)).html(jQuery.timeago(val.location_updated_at))
+      content.append(timeago)
+      contentwindow.append(content)
+      console.log(jQuery.timeago(val.location_updated_at))
+      // var contentwindow = "<a href='/user/"+val.id+ "><span class='popup'> " +val.name + " " + "shared their location "+ "<abbr class='timeago' title='"+ val.location_updated_at + "></abbr>" + "</span></a>";
       infowindow = new google.maps.InfoWindow({
-          content: contentwindow
+          content: $('<div>').append($(contentwindow).clone()).html()
        });
-
       infowindow.open(map, marker);
-      console.log("Here "+contentwindow);
+      //console.log("Here "+contentwindow);
     });
 
   });

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428195133) do
+ActiveRecord::Schema.define(version: 20140429064209) do
 
   create_table "business_hours", force: true do |t|
     t.time     "open_at"
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(version: 20140428195133) do
   end
 
   add_index "business_hours", ["restaurant_id"], name: "index_business_hours_on_restaurant_id"
+
+  create_table "check_ins", force: true do |t|
+    t.integer  "restaurant_id"
+    t.integer  "user_id"
+    t.datetime "time"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "check_ins", ["restaurant_id"], name: "index_check_ins_on_restaurant_id"
+  add_index "check_ins", ["user_id"], name: "index_check_ins_on_user_id"
 
   create_table "item_reviews", force: true do |t|
     t.integer  "restaurant_id"
@@ -98,18 +110,20 @@ ActiveRecord::Schema.define(version: 20140428195133) do
     t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                    default: "", null: false
+    t.string   "encrypted_password",       default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",            default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.float    "longitude"
     t.float    "latitude"
+    t.datetime "location_last_updated_at"
+    t.datetime "location_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

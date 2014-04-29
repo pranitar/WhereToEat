@@ -48,6 +48,8 @@ window.filter_restaurants =
       })
 
 $(document).ready ->
+  jQuery("abbr.timeago").timeago();
+
   $(".filter_button").click ->
     window.filter_restaurants.submit_filter($(this).attr("filter_type"))
   return

@@ -1,5 +1,7 @@
 WhereToEat::Application.routes.draw do
 
+  resources :check_ins
+
   devise_for :users
 
   devise_scope :user do
@@ -21,8 +23,8 @@ WhereToEat::Application.routes.draw do
   get "home", to: "home#index"
   post "home", to: "home#index"
   post "home/filter", to: "home#filter", as: :filter
-  patch "users/add_coordinates/:id", to: "users#add_coordinates", as: :add_coordinates   
-  patch "users/check_in/:id", to: "users#check_in", as: :check_in
+  patch "users/add_coordinates/:id", to: "users#add_coordinates", as: :add_coordinates
+  patch "users/add_check_in/:id", to: "users#add_check_in", as: :add_check_in
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
