@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428195133) do
+ActiveRecord::Schema.define(version: 20140429090423) do
 
   create_table "business_hours", force: true do |t|
     t.time     "open_at"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20140428195133) do
     t.string   "last_sign_in_ip"
     t.float    "longitude"
     t.float    "latitude"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

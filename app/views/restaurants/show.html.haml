@@ -1,30 +1,38 @@
-..container{:id => "text"}
+.container{:id => "text"}
   / .col-xs-12
   .row
     %p#notice= notice
     %p
-      = link_to(image_tag('naan.jpg'))
+      = link_to(image_tag('asianfood.jpg'))
   .row{:id => "restaurantintro"}
     %p{:id => "name"}
       = @restaurant.name 
     %p{:id => "description"}
       = @restaurant.cuisine
+    %p{:id => "description"}
+      / - unless @restaurant.business_hours.nil?
+      /   = @restaurant.is_open?
     %br       
   .row
-    .col-xs-6
+    .col-xs-7
       %p{:id => "restaurantaddress"}
-        %strong Address:
-        = @restaurant.address
+        %span.glyphicon.glyphicon-pushpin
+          = @restaurant.address
       &nbsp;
-      %p
-        %strong Price:
-        = '$' * @restaurant.price
+      %p{:id => "restaurantaddress"}
+        %span.glyphicon.glyphicon-credit-card
+          = '$' * @restaurant.price
+      &nbsp;
+      %p{:id => "restaurantaddress"}
+        %span.glyphicon.glyphicon-usd
+          = "View Menu"
+          / - @menus.each do |menu|
+          /   = link_to "View Menu", menu
       %br
       %br
-    .col-xs-6
+    .col-xs-5
       %p{:id => "map"}
         = image_tag @restaurant.create_map_link
   .row
-    %button.btn.btn-default= link_to "Add Review", new_restaurant_review_path(:restaurant_id => @restaurant)
-    = render 'reviews' unless @restaurant.restaurant_reviews.empty?
-    
+    %button.btn.btn-default= link_to "+ Add Review", new_restaurant_review_path(:restaurant_id => @restaurant)
+    = render 'reviews' unless @restaurant.restaurant_reviews.empty?    
