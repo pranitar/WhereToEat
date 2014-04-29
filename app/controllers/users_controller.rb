@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :add_coordinates]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :add_coordinates, :check_in]
 
   # GET /users
   # GET /users.json
@@ -39,13 +39,22 @@ class UsersController < ApplicationController
 
   def add_coordinates
     puts user_params 
-    if params[:longitude] && params[:latitude]
+    if user_params[:longitude] && user_params[:latitude]
       @user.update(:longitude => user_params[:longitude], :latitude => user_params[:latitude])
     end
     respond_to do |format|
-      format.html {render :nothing => true }
+      format.html { render :nothing => true }
     end
   end
+
+  def check_in 
+    if user_params[:location]
+      @user.update(:location => user_params[:location])
+    end
+    respond_to do |format|
+      format.html { redirect_to home_url, notice: 'Successfully checked in!' }
+    end
+  end 
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json

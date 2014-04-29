@@ -62,4 +62,8 @@ class Restaurant < ActiveRecord::Base
       puts 'hi'
     end
   end
+
+  def get_checked_in_users
+    User.where(:location => self.id)
+  end
 end
