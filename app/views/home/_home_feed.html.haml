@@ -1,0 +1,10 @@
+- @check_ins.each do |check_in|
+
+  %div.list-group-item{:href => 'user/' + check_in.user_id.to_s, :class => "#", :style => "background-image: linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(255, 255, 255, 0)), url('/assets/asiana.jpg')"}
+    %a.circle
+      = image_tag(check_in.user.avatar.url, height: '32', width: '32')
+    .title
+      %h4= check_in.user.name + " checked into " + check_in.restaurant.name + " " + time_ago_in_words(check_in.created_at) + " ago"
+      - if check_in.comment.present?
+        %h4= check_in.message
+/assets/

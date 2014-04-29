@@ -1,8 +1,9 @@
 class HomeController < ApplicationController
-  
+
   def index
   	@restaurants = Restaurant.where(nil)
   	@restaurants = @restaurants.by_price if params[:filter] == 'price'
+    @check_ins = CheckIn.all
   	puts @restaurants.inspect
   	render "home/index"
   end

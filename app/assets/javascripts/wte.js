@@ -88,15 +88,18 @@ $.getJSON( 'restaurants.json', function( data ) {
     });
 
   });
- 
+
 });
 
 $(document).on( 'shown.bs.tab', 'a[data-number="2"]', function (e) {
-        console.log($('#map-canvas')); 
+        console.log($('#map-canvas'));
         $('#map-canvas').css("visibility","visible");
         google.maps.event.trigger(map, 'resize');
     })
 $(document).on( 'shown.bs.tab', 'a[data-number="1"]', function (e) {
+        $('#map-canvas').css("visibility","hidden");
+    })
+$(document).on( 'shown.bs.tab', 'a[data-number="3"]', function (e) {
         $('#map-canvas').css("visibility","hidden");
     })
 });

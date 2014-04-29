@@ -28,71 +28,15 @@
         %a{"data-toggle" => "tab", href: "#feed", "data-number" => "3"} Feed
     #myTabContent.tab-content
       #list.tab-pane.fade.active.in
-        %ul.nav.nav-pills
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              Filter
-              %span.caret
-            %ul.dropdown-menu.centerMe
-              %li
-                %a.filter_button{filter_type: "price"} Price
-              %li
-                %a.filter_button{filter_type: "distance"} Distance
-              %li
-                %a.filter_button{filter_type: "time"} Waiting time
-              %li
-                %a.filter_button{filter_type: "rating"} Rating
+        =render 'home_filters'
         #viewport
-          %ul.list-group{id: 'restaurants'}
-            - @restaurants.each do |restaurant|
-              %a.list-group-item{:href => 'restaurants/' + restaurant.id.to_s, :class => "#{restaurant.area.downcase}"}
-                .title
-                  %h4= restaurant.name
-                  - if restaurant.accepts_dinex
-                    %span.badge.small-badge.pull-right.payment  Dinex
-                  - if restaurant.accepts_cash
-                    %span.badge.small-badge.pull-right.payment Cash
-                  - if restaurant.accepts_credit
-                    %span.badge.small-badge.pull-right.payment  Credit
-                  - if restaurant.accepts_plaid_cash
-                    %span.badge.small-badge.pull-right.payment  Plaid Cash
-                  %p= restaurant.address
-                  - if current_user.latitude && current_user.longitude
-                    %div= restaurant.distance(current_user.latitude, current_user.longitude).round(2).to_s + " Miles"
-                  %span.badge= restaurant.cuisine
-                  %span
-                    %h5= '$' * restaurant.price
-                  %br
-                  %span.glyphicon.glyphicon-star.glyphicon-star-full
-                  %span.glyphicon.glyphicon-star.glyphicon-star-full
-                  %span.glyphicon.glyphicon-star.glyphicon-star-full
-                  %span.glyphicon.glyphicon-star.glyphicon-star-empty
-                  %span.glyphicon.glyphicon-star.glyphicon-star-empty
-                  - if restaurant
-                    %span.badge.glyphicon.glyphicon-time.pull-right.small-badge.time
-                      Open Now
-                  - else
-                    %span.badge.glyphicon.glyphicon-time.pull-right.small-badge.time
-                      Closed
-                  %span.badge.glyphicon.glyphicon-time.pull-right.small-badge.time 10min
-                  %span.badge.glyphicon.glyphicon-user.pull-right.small-badge.time= restaurant.get_checked_in_users.size
-              %a= link_to "Check In", add_check_in_path(current_user, :user => {:location => restaurant.id}), :method => :patch, class: "badge button btn btn-primary check-in"
+          =render 'home_restaurants'
 
       #map.tab-pane.fade
-        %ul.nav.nav-pills
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              Filter
-              %span.caret
-            %ul.dropdown-menu.centerMe
-              %li
-                %a{href: "#", id: "price-filter"} Price
-              %li
-                %a{href: "#", id: "distance-filter"} Distance
-              %li
-                %a#time-filter{href: "#", id: "time-filter"} Waiting time
-              %li
-                %a#rating-filter{href: "#", id: "rating-filter"} Rating
+        =render 'home_filters'
+      #feed.tap-pane.fade
+        #viewport
+          =render 'home_feed'
     %div
       #map-canvas
 
