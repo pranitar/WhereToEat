@@ -5,12 +5,14 @@ class RestaurantsController < ApplicationController
   # GET /restaurants.json
   def index
     @restaurants = Restaurant.all
+    @menus = Menu.where('restaurant_id = ?', @restaurant)
   end
 
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
     @restaurant_reviews = RestaurantReview.where('restaurant_id = ?', @restaurant)
+    @menus = Menu.where('restaurant_id = ?', @restaurant)
   end
 
   # GET /restaurants/new

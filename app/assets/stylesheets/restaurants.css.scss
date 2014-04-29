@@ -25,6 +25,7 @@ h4 {
 }
 p {
 	margin-bottom: 4px;
+	font-size: 1.0em;
 }
 
  .navbar-form {
@@ -117,9 +118,6 @@ p {
 	border: 0px;
 }
 
-
-
-
 .glyphicon-remove-circle {
 	margin-top: 40px;
 	margin-bottom: 10px;
@@ -210,7 +208,7 @@ button {
 #map-canvas {
 	top: 0px !important;
 	width: 100% !important;
-	height: 320px!important;
+	height: 400px !important;
 	visibility: hidden;
 }
 
@@ -241,3 +239,52 @@ button {
   font-family: "Glyphicons Halflings";
   content: "\e086";
 }*/
+
+#text{
+	font-size: 16pt;
+}
+
+#name{
+	color: #f28500;
+	font-size: 60pt;
+}
+
+#description{
+	font-size: 30pt;
+}
+
+#restaurantintro{
+	margin-left: 5%;
+}
+
+#restaurantaddress{
+	font-size: 31pt;
+	margin-left: 20%;
+	margin-right: 40%
+}
+
+button.btn.btn-default{
+	width:100%;
+	font-size: 20pt;
+	background-color: #f28500;
+	a:link {color:White;}      /* unvisited link */
+	a:visited {color:Purple;}  /* visited link */
+	a:hover {color:White;}  /* mouse over link */
+	a:active {color:Purple;}  /* selected link */
+}
+
+tbody{
+	font-size: 20pt;
+}
+
+#tablestriping{
+	background-color: Moccasin;
+}
+
+tr:nth-of-type(odd) {
+  background-color: Blue;
+}
+
+tr:nth-of-type(even) {
+  background-color: Red;
+}

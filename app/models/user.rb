@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  mount_uploader :avatar, AvatarUploader
+
 	#Associations
 	has_many :restaurant_reviews
 	has_many :item_reviews
