@@ -91,8 +91,21 @@ $.getJSON( 'restaurants.json', function( data ) {
 
 });
 
+$('#distance_button').click(function(){
+  console.log('clicked')
+  $('.list-group').hide();
+  $('#distance').show();
+});
+
+$('#price_button').click(function(){
+  console.log('clicked')
+  $('.list-group').hide();
+  $('#price').show();
+});
+
 $(document).on( 'shown.bs.tab', 'a[data-number="2"]', function (e) {
         console.log($('#map-canvas'));
+        $('#feed').hide();
         $('#map-canvas').css("visibility","visible");
         google.maps.event.trigger(map, 'resize');
     })
@@ -100,6 +113,7 @@ $(document).on( 'shown.bs.tab', 'a[data-number="1"]', function (e) {
         $('#map-canvas').css("visibility","hidden");
     })
 $(document).on( 'shown.bs.tab', 'a[data-number="3"]', function (e) {
+        $('#feed').show();
         $('#map-canvas').css("visibility","hidden");
     })
 });

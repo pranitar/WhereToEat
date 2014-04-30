@@ -3,16 +3,16 @@
   .row
     %p#notice= notice
     %p
-      = link_to(image_tag('asianfood.jpg'))
+      = link_to(image_tag('asiana.jpg'))
   .row{:id => "restaurantintro"}
     %p{:id => "name"}
-      = @restaurant.name 
+      = @restaurant.name
     %p{:id => "description"}
       = @restaurant.cuisine
     %p{:id => "description"}
       / - unless @restaurant.business_hours.nil?
       /   = @restaurant.is_open?
-    %br       
+    %br
   .row
     .col-xs-7
       %p{:id => "restaurantaddress"}
@@ -35,4 +35,4 @@
         = image_tag @restaurant.create_map_link
   .row
     %button.btn.btn-default= link_to "+ Add Review", new_restaurant_review_path(:restaurant_id => @restaurant)
-    = render 'reviews' unless @restaurant.restaurant_reviews.empty?    
+    = render 'reviews' unless @restaurant.restaurant_reviews.empty?

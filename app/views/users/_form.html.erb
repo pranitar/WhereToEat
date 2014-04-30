@@ -27,7 +27,30 @@
     <%= f.label :avatar %><br />
     <%= f.file_field :avatar %>
   </div>
-  <div class="actions">
+
+  <div id="switcher-01"><!-- / --></div>
+  <script>
+  window.switcher = new AcidJs.ToggleSwitch({
+        // (String) [optional] path to the AcidJs.ToggleSwitch/ folder; default: ""
+        appRoot: "pages/javascript-iphone-toggle-buttons/example/"
+    });
+
+  window.switcher.render({
+    type: "checkbox",
+    name: "switcher-01",
+                defaultCheckedNode: [1, 2],
+                boundingBox: $("#switcher-01"),
+                items: [{
+                    value: "en-US",
+                    label: "English"
+                }]
+            });
+
+    $("#switcher-01").on("acidjs-toggle-switch", function(e, data) {
+        window.console.log(e.type, data);
+    });
+
+  </script>  <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

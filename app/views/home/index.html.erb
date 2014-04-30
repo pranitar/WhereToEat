@@ -9,10 +9,7 @@
 			    <div class="navbar-form pull-left">
 			      <input type="text" class="form-control col-lg-8 " placeholder="Search" id="search">
 			    </div>
-			    <div class="navbar-form pull-right">
-			    	<%= link_to 'Welcome, ' + current_user.name, edit_user_path(current_user), class: 'btn btn-default' %>
-			    </div>
-			    -->
+			    	<%= link_to '<span class="glyphicon glyphicon-cog"></span>'.html_safe, edit_user_path(current_user), class: "btn"%>
 			</div>
 			<div class="col-md-8">
 				<%= render file: 'restaurants/index' %>

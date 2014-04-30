@@ -20,7 +20,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new
     7.times do |i|
       r = @restaurant.business_hours.build
-      puts r.inspect 
+      puts r.inspect
       r.day = BusinessHour::Days[i]
     end
   end
@@ -78,19 +78,19 @@ class RestaurantsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
       params.require(:restaurant).permit(
-        :name, 
-        :street, 
-        :city, 
-        :state, 
-        :zip_code, 
-        :cuisine, 
-        :area, 
+        :name,
+        :street,
+        :city,
+        :state,
+        :zip_code,
+        :cuisine,
+        :area,
         :price,
         :accepts_dinex,
         :accepts_cash,
         :accepts_credit,
         :accepts_credit,
-        :longitude, 
+        :longitude,
         :latitude,
         business_hours_attributes: [:day, :open_at, :closed_at]
       )
