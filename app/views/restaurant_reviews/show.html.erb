@@ -17,7 +17,9 @@
 
 <p>
   <strong>Rating:</strong>
-  <%= @restaurant_review.rating %>
+  <%= @restaurant_review.rating.times do %>
+    <span class="icon-star"></span>
+  <%end%>
 </p>
 
 <p>

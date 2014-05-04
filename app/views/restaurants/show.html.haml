@@ -2,37 +2,34 @@
   / .col-xs-12
   .row
     %p#notice= notice
-    %p
-      = link_to(image_tag('asiana.jpg'))
+    %div{:id => "picture"}
   .row{:id => "restaurantintro"}
-    %p{:id => "name"}
+    %h5{:id => "name"}
       = @restaurant.name
-    %p{:id => "description"}
+    %span.badge.small-badge{:id => "description"}
       = @restaurant.cuisine
-    %p{:id => "description"}
-      / - unless @restaurant.business_hours.nil?
-      /   = @restaurant.is_open?
-    %br
-  .row
-    .col-xs-7
-      %p{:id => "restaurantaddress"}
+    %span.badge.small-badge{:id => "description"}
+      = '$' * @restaurant.price
+    %div#line-separator
+  .row{:id => "restaurantaddress"}
+    .col-xs-12
+      %h5{:id => "restaurantaddress"}
         %span.glyphicon.glyphicon-pushpin
           = @restaurant.address
-      &nbsp;
-      %p{:id => "restaurantaddress"}
-        %span.glyphicon.glyphicon-credit-card
-          = '$' * @restaurant.price
-      &nbsp;
-      %p{:id => "restaurantaddress"}
+      %br
+      %h5{:id => "restaurantaddress"}
         %span.glyphicon.glyphicon-usd
-          = "View Menu"
-          / - @menus.each do |menu|
-          /   = link_to "View Menu", menu
+          = link_to "View Menu", @restaurant.menus.first
       %br
-      %br
-    .col-xs-5
-      %p{:id => "map"}
-        = image_tag @restaurant.create_map_link
+      / = @restaurant.is_open?
+      / -if @restaurant.is_open?
+      /   = "Currently OPEN"
+      / -else
+      /   = "Currently CLOSED"
+  .row
+    %div#line-separator
+    %h5{:id => "map"}
+      = image_tag @restaurant.create_map_link
   .row
     %button.btn.btn-default= link_to "+ Add Review", new_restaurant_review_path(:restaurant_id => @restaurant)
-    = render 'reviews' unless @restaurant.restaurant_reviews.empty?
+    = render 'reviews' unless @restaurant.restaurant_reviews.empty?    
