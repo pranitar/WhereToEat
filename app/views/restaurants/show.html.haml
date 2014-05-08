@@ -5,12 +5,12 @@
     %div{:id => "picture"}
   .row{:id => "restaurantintro"}
     %h5{:id => "name"}
-      = @restaurant.name 
+      = @restaurant.name
     %span.badge.small-badge{:id => "description"}
-      = @restaurant.cuisine 
+      = @restaurant.cuisine
     %span.badge.small-badge{:id => "description"}
       = '$' * @restaurant.price
-    %div#line-separator   
+    %div#line-separator
   .row{:id => "restaurantaddress"}
     .col-xs-12
       %h5{:id => "restaurantaddress"}
@@ -32,4 +32,4 @@
       = image_tag @restaurant.create_map_link
   .row
     %button.btn.btn-default= link_to "+ Add Review", new_restaurant_review_path(:restaurant_id => @restaurant)
-    = render 'reviews' unless @restaurant.restaurant_reviews.empty?
+    = render 'reviews' unless @restaurant.restaurant_reviews.empty?    
