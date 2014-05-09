@@ -7,7 +7,7 @@
             <%= image_tag restaurant_review.user.avatar_url %>
           <% end %>
         </td>
-        <td id="tablestriping"><%= restaurant_review.user.name %>:<b><br><%= restaurant_review.review %></b></td>
+        <td id="tablestriping"><p class="text-muted"><%= restaurant_review.user.name %>:</p><b><p><%= restaurant_review.review %></b></p></td>
         <td id="tablestriping">
           <% restaurant_review.rating.times do %>
             <span class="glyphicon glyphicon-star"></span>
