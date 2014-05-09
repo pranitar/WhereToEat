@@ -15,17 +15,17 @@
     .col-xs-12
       %h5{:id => "restaurantaddress"}
         %span.glyphicon.glyphicon-pushpin
-          = @restaurant.address
+        = @restaurant.address
       %br
       %h5{:id => "restaurantaddress"}
-        %span.glyphicon.glyphicon-usd
-          = link_to "View Menu", @restaurant.menus.first
+        -unless @restaurant.business_hours.nil?
+          -if @restaurant.is_open?
+            = image_tag "green.png"
+            = "OPEN"
+          -else
+            = image_tag "red.png"
+            = "CLOSED"
       %br
-      / = @restaurant.is_open?
-      / -if @restaurant.is_open?
-      /   = "Currently OPEN"
-      / -else
-      /   = "Currently CLOSED"
   .row
     %div#line-separator
     %h5{:id => "map"}
