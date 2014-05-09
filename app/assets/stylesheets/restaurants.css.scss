@@ -66,6 +66,18 @@ p {
     background-size:cover;
     border-color: white;
 }
+.feed-item {
+	 border-color: #CCCCCC;
+	 margin-left: 2px;
+	 margin-right: 2px;
+	 margin-top: 2px;
+	 padding: 0;
+	 padding-left: 5px;
+}
+
+h6 {
+	 color: black;
+}
 
 .cmu {
 	background-image:
@@ -256,21 +268,21 @@ button {
 #name{
 	color: #f28500;
 	font-size: 14pt;
-	font-weight: bold;
-	margin-left: 7%;
+	margin-left: 10px;
 	width:100%;
-	margin-top: 5px;
 	margin-bottom: 5px;
 }
 
-#description{
-	font-size: 14pt;
-	margin-left: 5%;
-	margin-bottom: 5px;
+span#description{
+	font-size: 14px;
+	margin-left: 8px;
 }
 
-#map{
-	width: 100%;
+div#map-small{
+	width: 100% !important;
+	height: 200px;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 div#line-separator{
@@ -278,10 +290,10 @@ div#line-separator{
 	background: #cccccc;
 }
 
-#restaurantaddress{
-	font-size: 12pt;
-	margin-left: 5%;
-	margin-top: 10px;
+#restaurantopen{
+	font-size: 14pt;
+	margin-left: 8px;;
+	margin-top: 20px;
 	margin-bottom: 10px;
 }
 
@@ -300,16 +312,19 @@ tbody{
 }
 
 #tablestriping{
-	background-color: Moccasin;
+
+	text-align: left;
+	padding-left: 10px;
+	
 }
 
-tr:nth-of-type(odd) {
-  background-color: Blue;
+#tablestriping-avatar{
+	padding-left: 30px;
 }
 
-tr:nth-of-type(even) {
-  background-color: Red;
-}
+
+
+
 
 /* Circle Avatar Styles */
 
@@ -317,22 +332,97 @@ tr:nth-of-type(even) {
 	line-height: 0;		/* remove line-height */
 	display: inline-block;	/* circle wraps image */
 	margin: 5px;
-  border: 2px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.4);
 	border-radius: 50%;	/* relative value */
 	/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
-	transition: linear 0.25s;
-  height: 32px;
-  width: 32px;
+	/*transition: linear 0.25s;*/
+  height: 33px;
+  width: 33px;
 }
 .circle img {
 	border-radius: 50%;	/* relative value for
 				   adjustable image size */
 }
-.circle:hover {
+/*.circle:hover {
 	transition: ease-out 0.2s;
-  border: 2px solid rgba(255,255,255,0.8);
+  border: 2px solid rgba(255,255,255,0.9);
   -webkit-transition: ease-out 0.2s;
 }
+*/
 a.circle {
-  color: transparent;
+  color: #cccccc
 } 
+
+
+
+.span.glyphicon.glyphicon-map-marker {
+	padding: 0;
+	margin: 0;
+}
+
+.small-circle{
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    border:0px solid #ccc;
+    width:10px;
+    height:10px;
+ }
+ 
+.green {
+    background-color: green;
+}
+
+.red{
+    background-color: red;
+}
+
+
+.label {
+	padding: 3px;
+
+}
+
+#restaurantaddress{
+	margin-left: 8px;
+	margin-right: -5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.price {
+	font-size: 18px;
+	margin: 10px;
+}
+.glyphicon.glyphicon-star {
+	font-size: 16px;
+	color: #F6870E;
+}
+
+
+div#restaurantaddress {
+margin-bottom: -17px;
+}
+
+#rating {
+	margin-left: 8px;
+}
+
+.btn-review {
+	padding-top: 10px;
+}
+
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the textalign */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+
+}

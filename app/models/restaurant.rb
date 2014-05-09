@@ -55,9 +55,13 @@ class Restaurant < ActiveRecord::Base
 
   def create_map_link(zoom=12,width=800,height=800)
   	markers = ""; i = 1
-  	markers += "&markers=color:red%7Ccolor:red%7Clabel:#{i}%7C#{self.latitude},#{self.longitude}"
-  	map = "http://maps.google.com/maps/api/staticmap?center= #{latitude},#{longitude}&zoom=16&size=400x400&maptype=roadmap#{markers}&sensor=false"
+  	markers += "&markers=color:red%7Ccolor:orange%7Clabel:#{i}%7C#{self.latitude},#{self.longitude}"
+  	map = "http://maps.google.com/maps/api/staticmap?center= #{latitude},#{longitude}&zoom=16&size=350x200&maptype=roadmap#{markers}&sensor=false"
   end
+
+
+
+
 
 	#Areas
 	def self.areas
