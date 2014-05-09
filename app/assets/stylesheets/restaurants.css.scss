@@ -18,7 +18,7 @@ h5
 		padding: 0px;
 		display:inline
 
-	} 
+	}
 h4 {
 	padding: 0px;
 	margin: 0px;
@@ -29,7 +29,7 @@ p {
 }
 
  .navbar-form {
-	
+
 	margin-top: 5px !important;
 	margin-bottom: 5px;
 	border-top: 0px !important;
@@ -37,7 +37,7 @@ p {
 	padding: 0px !important;
 	display: block;
 
-}	
+}
 .navbar {
 	border-radius: 0px;
 	margin: 0px !important;
@@ -62,19 +62,31 @@ p {
 
 
 .list-group-item {
-    background-image: 
-    	linear-gradient( to right, 
-	     	rgba(0, 0, 0, 0.75),
-	     	rgba(255, 255, 255, 0)
-    	),
-    	url('pic.jpg');
     background-repeat: no-repeat;
     background-size:cover;
     border-color: white;
 }
 
+.cmu {
+	background-image:
+    	linear-gradient( to right,
+	     	rgba(0, 0, 0, 0.75),
+	     	rgba(255, 255, 255, 0)
+    	),
+    	url('cmu.jpg');
+}
+
+.craig {
+	background-image:
+    	linear-gradient( to right,
+	     	rgba(0, 0, 0, 0.75),
+	     	rgba(255, 255, 255, 0)
+    	),
+    	url('craig.jpg');
+}
+
 .thumbnail {
- 
+
  	height: 100px;;
  	margin-left: -13px;
  	margin-right: 15px;
@@ -82,6 +94,15 @@ p {
  	margin-bottom: 5px;
  	padding-bottom: 5px !important;
 
+}
+
+.check-in {
+	position: relative;
+	left: -1em;
+	top: -7em;
+	z-index: 9000;
+	float: right;
+	color:white;
 }
 
 .well {
@@ -143,7 +164,7 @@ button {
    }
 
 .nav-tabs>li {
-    width:50%;
+    width:33%;
     text-align: center;
     padding: 0px;
 }
@@ -179,7 +200,7 @@ button {
 }
 
 .time {
-	margin-right: -10px;
+	margin-right: 10px;
 	top: 13px !important;
 	position: relative;
 	right: -14px !important;
@@ -208,6 +229,17 @@ button {
 .cont {
 	font-size: 0px;
 }
+
+.popup
+    {
+        font-size:16px !important;
+        width: 250px;
+    }
+
+/*.popup:before {
+  font-family: "Glyphicons Halflings";
+  content: "\e086";
+}*/
 
 #text{
 	font-size: 16pt;
@@ -278,3 +310,29 @@ tr:nth-of-type(odd) {
 tr:nth-of-type(even) {
   background-color: Red;
 }
+
+/* Circle Avatar Styles */
+
+.circle {
+	line-height: 0;		/* remove line-height */
+	display: inline-block;	/* circle wraps image */
+	margin: 5px;
+  border: 2px solid rgba(255,255,255,0.4);
+	border-radius: 50%;	/* relative value */
+	/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+	transition: linear 0.25s;
+  height: 32px;
+  width: 32px;
+}
+.circle img {
+	border-radius: 50%;	/* relative value for
+				   adjustable image size */
+}
+.circle:hover {
+	transition: ease-out 0.2s;
+  border: 2px solid rgba(255,255,255,0.8);
+  -webkit-transition: ease-out 0.2s;
+}
+a.circle {
+  color: transparent;
+} 

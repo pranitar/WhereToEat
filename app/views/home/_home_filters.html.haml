@@ -1,0 +1,14 @@
+%ul.nav.nav-pills
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+      Filter
+      %span.caret
+    %ul.dropdown-menu.centerMe
+      %li
+        %a#price_button{filter_type: "price"} Price
+      %li
+        %a#distance_button{filter_type: "distance"} Distance
+      %li
+        %a.filter_button{filter_type: "time"} Waiting time
+      %li
+        %a.filter_button{filter_type: "rating"} Rating

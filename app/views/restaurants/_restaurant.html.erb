@@ -1,5 +1,5 @@
-- @restaurants.each do |restaurant|
-  %a.list-group-item{ :href => restaurant_url(restaurant.id) } 
+- @restaurants['alphabetical'].each do |restaurant|
+  %a.list-group-item{ :href => restaurant_url(restaurant.id) }
     %span.glyphicon.glyphicon-time.pull-right
       .title
         %h4= restaurant.name

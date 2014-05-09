@@ -5,12 +5,12 @@
     %div{:id => "picture"}
   .row{:id => "restaurantintro"}
     %h5{:id => "name"}
-      = @restaurant.name 
+      = @restaurant.name
     %span.badge.small-badge{:id => "description"}
-      = @restaurant.cuisine 
+      = @restaurant.cuisine
     %span.badge.small-badge{:id => "description"}
       = '$' * @restaurant.price
-    %div#line-separator   
+    %div#line-separator
   .row{:id => "restaurantaddress"}
     .col-xs-12
       %h5{:id => "restaurantaddress"}

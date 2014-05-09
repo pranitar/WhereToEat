@@ -27,7 +27,109 @@
     <%= f.label :avatar %><br />
     <%= f.file_field :avatar %>
   </div>
-  <div class="actions">
+  <div>
+      <h5>
+        You are at
+        <span id="location">
+        </span>
+      </h5>
+    <p>
+    <input id="locationNow" type="button" value="Get location now!"/> <p>
+    <input id="startWatchLocation" type="button" value="Start watching location"/> <p>
+    <input id="endWatchLocation" type="button" value="Stop watching location"/>
+</div>
+
+  <div id="switcher-01"><!-- / --></div>
+  <script>
+  window.switcher = new AcidJs.ToggleSwitch({
+        // (String) [optional] path to the AcidJs.ToggleSwitch/ folder; default: ""
+        appRoot: "pages/javascript-iphone-toggle-buttons/example/"
+    });
+
+  window.switcher.render({
+    type: "checkbox",
+    name: "switcher-01",
+                defaultCheckedNode: [1, 2],
+                boundingBox: $("#switcher-01"),
+                items: [{
+                    value: "en-US",
+                    label: "English"
+                }]
+            });
+
+    $("#switcher-01").on("acidjs-toggle-switch", function(e, data) {
+        window.console.log(e.type, data);
+    });
+
+  </script>  <div class="actions">
     <%= f.submit %>
   </div>
+
+  <script type="text/javascript">
+var id;
+var nop = function() { };
+
+  if (!navigator.geolocation) {
+      navigator.geolocation = {};
+  }
+  if (!navigator.geolocation.getCurrentPosition) {
+      navigator.geolocation.getCurrentPosition = nop;
+  }
+
+  document.getElementById('locationNow').onclick = function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      document.getElementById('location').innerHTML = position.coords.latitude + ", " + position.coords.longitude;
+      alert(position);
+      id = $('#user').data('id');
+      $.ajax({
+        type: "PATCH",
+        url: "users/add_coordinates/" + id,
+        data: {user: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+          }
+        },
+        success: function(data) {
+          return console.log(data);
+        },
+        error: function(data) {
+          return console.log(data);
+        }
+      });
+
+    });
+  }
+
+  function successCallback(position) {
+    document.getElementById('location').innerHTML = position.coords.latitude + ", " + position.coords.longitude + ": last updated at " + position.timestamp;
+    var updateDiv = document.getElementById('updateDiv')
+    updateDiv.style.visibility = 'visible';
+    setTimeout(function() {
+      updateDiv.style.visibility = 'hidden';
+    }, 200);
+  }
+
+  function errCallback(err) {
+      var message = err.message;
+      var code = err.code;
+      document.getElementById('location').innerHTML = "Erorr: " + code + ", " + err.message;
+      //code = 0 => UNKNOWN_ERROR, 1 => PERMISSION_DENIED, 2 => POSITION_UNAVAILABLE, 3 => TIMEOUT
+  }
+
+  // optional for geolocation.watchPosition
+  var options = {
+      enableHighAccuracy: true,
+      maximumAge: 30000,
+      timeout: 27000
+  };
+
+  var watchId;
+  document.getElementById('startWatchLocation').onclick = function() {
+    watchId = navigator.geolocation.watchPosition(successCallback, errCallback, options);
+  };
+  document.getElementById('endWatchLocation').onclick = function() {
+    navigator.geolocation.clearWatch(watchId);
+  };
+
+  </script>
 <% end %>

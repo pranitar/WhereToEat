@@ -1,4 +1,4 @@
-<head> 
+<head>
 	<script src="http://maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry", type: "text/javascript"></script>
 	<body>
 		<div class="container">
@@ -9,11 +9,13 @@
 			    <div class="navbar-form pull-left">
 			      <input type="text" class="form-control col-lg-8 " placeholder="Search" id="search">
 			    </div>
+			    	<%= link_to '<span class="glyphicon glyphicon-cog"></span>'.html_safe, edit_user_path(current_user), class: "btn"%>
+			</div>
 			    <!--<div class="navbar-form pull-right">
 			    	<%#= link_to 'Add Restaurant', new_restaurant_path, class: 'btn btn-default' %>
 			    </div>
 			    -->
-			</div>	
+			</div>
 			<div class="col-md-8">
 				<%= render file: 'restaurants/index' %>
 				<%= yield :javascripts %>

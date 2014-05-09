@@ -4,7 +4,20 @@ String::multi = (num) ->
   ret += this  while n++ < num
   ret
 
+window.check_in =
+  submit: (restaurant_id) ->
+    $.ajax({
+      type: "PATCH",
+      url: "users/check_in/" + id,
+      data: {user: {location: restaurant_id}},
+      success: (data) ->
+        return console.log(data);
+      error: (data) ->
+        return console.log(data);
+      });
+
 window.filter_restaurants =
+
   submit_filter: (filter_type) ->
     console.log(filter_type)
     $.ajax({
@@ -35,7 +48,19 @@ window.filter_restaurants =
       })
 
 $(document).ready ->
+
+  $('.list-group').hide();
+  $('#alphabetical').show();
+
+  jQuery("abbr.timeago").timeago();
+
   $(".filter_button").click ->
+    console.log('clicked')
     window.filter_restaurants.submit_filter($(this).attr("filter_type"))
+  return
+
+  $(".check-in").click ->
+    console.log('clicked')
+    window.check_in.submit($(this).attr("restaurant_id"))
   return
 return
