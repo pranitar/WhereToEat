@@ -14,7 +14,7 @@
         %span.glyphicon.glyphicon-star.glyphicon-star-full
       %br
         %h5{:id => "restaurantopen"}
-          -unless @restaurant.business_hours.nil?
+          -if !@restaurant.business_hours.nil?
             -if @restaurant.is_open?
               %span.label.label-success
                 open now
@@ -28,10 +28,10 @@
           %br
           .row{:id => "restaurantaddress"}
             %span.glyphicon.glyphicon-map-marker
-            %h5 
+            %h5
               = @restaurant.address
 
-      
+
       / = @restaurant.is_open?
       / -if @restaurant.is_open?
       /   = "Currently OPEN"
@@ -41,9 +41,9 @@
     .col-xs-12
       /%div#line-separator
       %div#map-small{style: 'background-image: url("'+@restaurant.create_map_link+'");'}
-       
+
   .row.row-centered
-    .col-centered 
+    .col-centered
       %a{:href => new_restaurant_review_path(:restaurant_id => @restaurant), :class => "button btn btm-primary btn-sm btn-warning btn-review"}
         Add Review
-    = render 'reviews' unless @restaurant.restaurant_reviews.empty?    
+    = render 'reviews' unless @restaurant.restaurant_reviews.empty?
