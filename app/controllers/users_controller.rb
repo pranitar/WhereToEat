@@ -37,6 +37,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def send_meetup_email
+    @user = User.find(params[:receiver_id])
+    UserMailer.meetup_email(@user).deliver
+    redirect_to home_url, notice: 'Successfully sent email'
+  end
+
   def add_coordinates
     puts user_params
     if user_params[:longitude] && user_params[:latitude]
