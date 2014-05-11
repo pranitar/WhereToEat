@@ -25,6 +25,7 @@ WhereToEat::Application.routes.draw do
   post "home/filter", to: "home#filter", as: :filter
   patch "users/add_coordinates/:id", to: "users#add_coordinates", as: :add_coordinates
   patch "users/add_check_in/:id", to: "users#add_check_in", as: :add_check_in
+  post "users/send_meetup_email/", to: "users#send_meetup_email", as: :meetup_email
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

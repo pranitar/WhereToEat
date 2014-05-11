@@ -3,7 +3,10 @@
 
   %div.list-group-item.feed-item{:href => 'user/' + check_in.user_id.to_s, :class => "#"}
     %a.circle
-      = image_tag(check_in.user.avatar.url, height: '30', width: '30')
+      = image_tag(check_in.user.avatar.url, height: '32', width: '32')
+    %a
+      = link_to 'Message', meetup_email_path(:sender_id => @current_user, :receiver_id => check_in.user), :method => :post
+      %span.glyphicon.glyphicon-envelope
     .title
       %h6= check_in.user.name + " checked into " + check_in.restaurant.name + " " + time_ago_in_words(check_in.created_at) + " ago"
       - if check_in.comment.present?

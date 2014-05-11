@@ -39,9 +39,7 @@ class Restaurant < ActiveRecord::Base
 
   #Filter by distance
   def self.by_distance(lat, long)
-		puts self.inspect
-		Restaurant.all.sort {|a,b| a.distance(lat,long) <=> b.distance(lat,long)}
-    #Restaurant.order(self.distance(lat,long))
+		Restaurant.where('latitude NOT null AND longitude NOT null').sort {|a,b| a.distance(lat,long) <=> b.distance(lat,long)}
   end
 
   def distance(lat, long)
@@ -70,11 +68,15 @@ class Restaurant < ActiveRecord::Base
 
   def is_open?
     business_hour = self.business_hours.where("day = ?", Time.now.strftime("%A")).first
-    puts business_hour
+
     #now see if current time is in between open at and closed at
-    open_at_today = Time.now.change({:hour => business_hour.open_at.hour , :min => business_hour.open_at.hour})
-    closed_at_today = Time.now.change({:hour => business_hour.closed_at.hour , :min => business_hour.closed_at.hour})
-    return open_at_today < Time.now && Time.now < closed_at_today
+    if !business_hour.nil?
+			open_at_today = Time.now.change({:hour => business_hour.open_at.hour , :min => business_hour.open_at.hour})
+    	closed_at_today = Time.now.change({:hour => business_hour.closed_at.hour , :min => business_hour.closed_at.hour})
+    	return open_at_today < Time.now && Time.now < closed_at_today
+		else
+			return false
+		end
   end
 
   def add_business_hour(open_at, close_at, day)
