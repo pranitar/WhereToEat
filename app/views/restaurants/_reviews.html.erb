@@ -9,9 +9,11 @@
         </td>
         <td id="tablestriping"><p class="text-muted"><%= restaurant_review.user.name %>:</p><b><p><%= restaurant_review.review %></b></p></td>
         <td id="tablestriping">
+        <% unless restaurant_review.rating.nil? %>
           <% restaurant_review.rating.times do %>
             <span class="glyphicon glyphicon-star"></span>
           <%end%>
+        <%end%>
         </td>
       </tr>
     <% end %>

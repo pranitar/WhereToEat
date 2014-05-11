@@ -141,8 +141,11 @@ h6 {
 .glyphicon-star-empty {
 	color: #cccccc;
 	margin-top: 10px;
+	font-size: 15px;
 }
-
+.glyphicon-star-full {
+	font-size: 15px;
+}
 #filter {
 	color: #ffffff;
 	margin-top: 12px;
@@ -391,7 +394,7 @@ a.circle {
 	margin: 10px;
 }
 .glyphicon.glyphicon-star {
-	font-size: 16px;
+	font-size: 15px;
 	color: #F6870E;
 }
 

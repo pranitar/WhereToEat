@@ -77,7 +77,8 @@ $.getJSON( 'restaurants.json', function( data ) {
     marker.setMap(map);
    // map.setCenter(marker.position);
     google.maps.event.addListener(marker, 'click', function() {
-      var contentwindow = "<a href='/restaurants/"+val.id+"</a>"; //<span class='popup'> " +val.name+"</span>
+        var contentwindow = '<a href="/restaurants/'+val.id+'"><span class="popup">'+val.name+'</span></a>';
+      //var contentwindow = "<span href='/restaurants/'"+val.id+" class='popup'> " +val.name+"</span>";
 
       infowindow = new google.maps.InfoWindow({
           content: contentwindow

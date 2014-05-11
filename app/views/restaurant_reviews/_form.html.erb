@@ -1,4 +1,5 @@
-<%= form_for(@restaurant_review) do |f| %>
+<div class="col-centered">
+<%= simple_form_for(@restaurant_review, html: {class: 'form-horizontal'  }) do |f| %>
   <% if @restaurant_review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@restaurant_review.errors.count, "error") %> prohibited this restaurant_review from being saved:</h2>
@@ -10,28 +11,31 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  
+  <%= field_set_tag do %>
+  <div class="col-lg-10">
+  <div class="field" style="display:none;">
     <%= f.label :restaurant_id %><br>
     <%= f.text_field :restaurant_id %>
   </div>
-  <div class="field">
+  <div class="field" style="display:none;">
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label :review %><br>
-    <%= f.text_field :review %>
+    <%= f.label :review, :id => "formfont" %><br> 
+    <%= f.text_field :review, as: :text, :id => "formfont" %>
   </div>
-  <div class="field">
+ <div class="field">
     <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
+    <%= f.number_field :rating, :class => "rating" %>
   </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
+    <%= link_to 'Back', restaurant_path(@restaurant_review.restaurant.id), :class => "btn btn-default btn-sm" %>
+    <%= f.submit "Create Review", :class => "btn btn-default btn-sm" %>
+   
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%end%>
+
+
 <% end %>
+  </div>
