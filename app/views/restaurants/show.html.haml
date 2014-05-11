@@ -1,35 +1,49 @@
+%meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+%link{href: "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css", rel: "stylesheet"}/
 .container{:id => "text"}
-  / .col-xs-12
   .row
     %p#notice= notice
     %div{:id => "picture"}
   .row{:id => "restaurantintro"}
-    %h5{:id => "name"}
-      = @restaurant.name 
-    %span.badge.small-badge{:id => "description"}
-      = @restaurant.cuisine 
-    %span.badge.small-badge{:id => "description"}
-      = '$' * @restaurant.price
-    %div#line-separator   
-  .row{:id => "restaurantaddress"}
-    .col-xs-12
-      %h5{:id => "restaurantaddress"}
-        %span.glyphicon.glyphicon-pushpin
-          = @restaurant.address
+    .col-sm-5
+      %h5{:id => "name"}
+        = @restaurant.name
+      %span#rating
+        %span.glyphicon.glyphicon-star.glyphicon-star-full
+        %span.glyphicon.glyphicon-star.glyphicon-star-full
+        %span.glyphicon.glyphicon-star.glyphicon-star-full
       %br
-      %h5{:id => "restaurantaddress"}
-        %span.glyphicon.glyphicon-usd
-          = link_to "View Menu", @restaurant.menus.first
-      %br
+        %h5{:id => "restaurantopen"}
+          -if !@restaurant.business_hours.nil?
+            -if @restaurant.is_open?
+              %span.label.label-success
+                open now
+            -else
+              %span.label.label-danger
+                closed
+          %span.label.label-default{:id => "description"}
+            = @restaurant.cuisine
+          %span.price
+            = '$' * @restaurant.price
+          %br
+          .row{:id => "restaurantaddress"}
+            %span.glyphicon.glyphicon-map-marker
+            %h5
+              = @restaurant.address
+
+
       / = @restaurant.is_open?
       / -if @restaurant.is_open?
       /   = "Currently OPEN"
       / -else
       /   = "Currently CLOSED"
   .row
-    %div#line-separator
-    %h5{:id => "map"}
-      = image_tag @restaurant.create_map_link
-  .row
-    %button.btn.btn-default= link_to "+ Add Review", new_restaurant_review_path(:restaurant_id => @restaurant)
-    = render 'reviews' unless @restaurant.restaurant_reviews.empty?    
+    .col-xs-12
+      /%div#line-separator
+      %div#map-small{style: 'background-image: url("'+@restaurant.create_map_link+'");'}
+
+  .row.row-centered
+    .col-centered
+      %a{:href => new_restaurant_review_path(:restaurant_id => @restaurant), :class => "button btn btm-primary btn-sm btn-warning btn-review"}
+        Add Review
+    = render 'reviews' unless @restaurant.restaurant_reviews.empty?

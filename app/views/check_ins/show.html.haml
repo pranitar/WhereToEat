@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Restaurant:
+  = @check_in.restaurant
+%p
+  %b User:
+  = @check_in.user
+%p
+  %b Time:
+  = @check_in.time
+%p
+  %b Comment:
+  = @check_in.comment
+
+= link_to 'Edit', edit_check_in_path(@check_in)
+\|
+= link_to 'Back', check_ins_path

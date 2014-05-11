@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 20140429090423) do
 
   add_index "business_hours", ["restaurant_id"], name: "index_business_hours_on_restaurant_id"
 
+  create_table "check_ins", force: true do |t|
+    t.integer  "restaurant_id"
+    t.integer  "user_id"
+    t.datetime "time"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "check_ins", ["restaurant_id"], name: "index_check_ins_on_restaurant_id"
+  add_index "check_ins", ["user_id"], name: "index_check_ins_on_user_id"
+
   create_table "item_reviews", force: true do |t|
     t.integer  "restaurant_id"
     t.integer  "user_id"
@@ -110,6 +122,7 @@ ActiveRecord::Schema.define(version: 20140429090423) do
     t.string   "last_sign_in_ip"
     t.float    "longitude"
     t.float    "latitude"
+    t.datetime "location_updated_at"
     t.string   "avatar"
   end
 

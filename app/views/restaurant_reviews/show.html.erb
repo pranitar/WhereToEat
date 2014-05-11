@@ -1,4 +1,6 @@
+
 <p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Restaurant:</strong>
@@ -17,8 +19,10 @@
 
 <p>
   <strong>Rating:</strong>
-  <%= @restaurant_review.rating.times do %>
-    <span class="icon-star"></span>
+  <% unless @restaurant_review.rating.nil? %>
+    <%= @restaurant_review.rating.times do %>
+     <span class="icon-star"></span>
+    <%end%>
   <%end%>
 </p>
 
@@ -28,4 +32,4 @@
 </p>
 
 <%= link_to 'Edit', edit_restaurant_review_path(@restaurant_review) %> |
-<%= link_to 'Back', restaurant_reviews_path %>
+<%= link_to 'Back', restaurant_path(@restaurant_review.restaurant.id) %>

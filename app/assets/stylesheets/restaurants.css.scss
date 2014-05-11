@@ -18,7 +18,7 @@ h5
 		padding: 0px;
 		display:inline
 
-	} 
+	}
 h4 {
 	padding: 0px;
 	margin: 0px;
@@ -29,7 +29,7 @@ p {
 }
 
  .navbar-form {
-	
+
 	margin-top: 5px !important;
 	margin-bottom: 5px;
 	border-top: 0px !important;
@@ -37,7 +37,7 @@ p {
 	padding: 0px !important;
 	display: block;
 
-}	
+}
 .navbar {
 	border-radius: 0px;
 	margin: 0px !important;
@@ -62,19 +62,43 @@ p {
 
 
 .list-group-item {
-    background-image: 
-    	linear-gradient( to right, 
-	     	rgba(0, 0, 0, 0.75),
-	     	rgba(255, 255, 255, 0)
-    	),
-    	url('pic.jpg');
     background-repeat: no-repeat;
     background-size:cover;
     border-color: white;
 }
+.feed-item {
+	 border-color: #CCCCCC;
+	 margin-left: 2px;
+	 margin-right: 2px;
+	 margin-top: 2px;
+	 padding: 0;
+	 padding-left: 5px;
+}
+
+h6 {
+	 color: black;
+}
+
+.cmu {
+	background-image:
+    	linear-gradient( to right,
+	     	rgba(0, 0, 0, 0.75),
+	     	rgba(255, 255, 255, 0)
+    	),
+    	url('cmu.jpg');
+}
+
+.craig {
+	background-image:
+    	linear-gradient( to right,
+	     	rgba(0, 0, 0, 0.75),
+	     	rgba(255, 255, 255, 0)
+    	),
+    	url('craig.jpg');
+}
 
 .thumbnail {
- 
+
  	height: 100px;;
  	margin-left: -13px;
  	margin-right: 15px;
@@ -82,6 +106,15 @@ p {
  	margin-bottom: 5px;
  	padding-bottom: 5px !important;
 
+}
+
+.check-in {
+	position: relative;
+	left: -1em;
+	top: -7em;
+	z-index: 9000;
+	float: right;
+	color:white;
 }
 
 .well {
@@ -108,8 +141,11 @@ p {
 .glyphicon-star-empty {
 	color: #cccccc;
 	margin-top: 10px;
+	font-size: 15px;
 }
-
+.glyphicon-star-full {
+	font-size: 15px;
+}
 #filter {
 	color: #ffffff;
 	margin-top: 12px;
@@ -143,7 +179,7 @@ button {
    }
 
 .nav-tabs>li {
-    width:50%;
+    width:33%;
     text-align: center;
     padding: 0px;
 }
@@ -179,7 +215,7 @@ button {
 }
 
 .time {
-	margin-right: -10px;
+	margin-right: 10px;
 	top: 13px !important;
 	position: relative;
 	right: -14px !important;
@@ -209,6 +245,17 @@ button {
 	font-size: 0px;
 }
 
+.popup
+    {
+        font-size:16px !important;
+        width: 250px;
+    }
+
+/*.popup:before {
+  font-family: "Glyphicons Halflings";
+  content: "\e086";
+}*/
+
 #text{
 	font-size: 16pt;
 	width:100%
@@ -224,21 +271,21 @@ button {
 #name{
 	color: #f28500;
 	font-size: 14pt;
-	font-weight: bold;
-	margin-left: 7%;
+	margin-left: 10px;
 	width:100%;
-	margin-top: 5px;
 	margin-bottom: 5px;
 }
 
-#description{
-	font-size: 14pt;
-	margin-left: 5%;
-	margin-bottom: 5px;
+span#description{
+	font-size: 14px;
+	margin-left: 8px;
 }
 
-#map{
-	width: 100%;
+div#map-small{
+	width: 100% !important;
+	height: 200px;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 div#line-separator{
@@ -246,10 +293,10 @@ div#line-separator{
 	background: #cccccc;
 }
 
-#restaurantaddress{
-	font-size: 12pt;
-	margin-left: 5%;
-	margin-top: 10px;
+#restaurantopen{
+	font-size: 14pt;
+	margin-left: 8px;;
+	margin-top: 20px;
 	margin-bottom: 10px;
 }
 
@@ -268,13 +315,120 @@ tbody{
 }
 
 #tablestriping{
-	background-color: Moccasin;
+
+	text-align: left;
+	padding-left: 10px;
+	
 }
 
-tr:nth-of-type(odd) {
-  background-color: Blue;
+#tablestriping-avatar{
+	padding-left: 30px;
 }
 
-tr:nth-of-type(even) {
-  background-color: Red;
+
+
+
+
+/* Circle Avatar Styles */
+
+.circle {
+	line-height: 0;		/* remove line-height */
+	display: inline-block;	/* circle wraps image */
+	margin: 5px;
+  border: 1px solid rgba(255,255,255,0.4);
+	border-radius: 50%;	/* relative value */
+	/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+	/*transition: linear 0.25s;*/
+  height: 33px;
+  width: 33px;
+}
+.circle img {
+	border-radius: 50%;	/* relative value for
+				   adjustable image size */
+}
+/*.circle:hover {
+	transition: ease-out 0.2s;
+  border: 2px solid rgba(255,255,255,0.9);
+  -webkit-transition: ease-out 0.2s;
+}
+*/
+a.circle {
+  color: #cccccc
+} 
+
+
+
+.span.glyphicon.glyphicon-map-marker {
+	padding: 0;
+	margin: 0;
+}
+
+.small-circle{
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    border:0px solid #ccc;
+    width:10px;
+    height:10px;
+ }
+ 
+.green {
+    background-color: green;
+}
+
+.red{
+    background-color: red;
+}
+
+
+
+#restaurantaddress{
+	margin-left: 8px;
+	margin-right: -5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.price {
+	font-size: 18px;
+	margin: 10px;
+}
+.glyphicon.glyphicon-star {
+	font-size: 15px;
+	color: #F6870E;
+}
+
+
+div#restaurantaddress {
+margin-bottom: -17px;
+}
+
+#rating {
+	margin-left: 8px;
+}
+
+.btn-review {
+	padding-top: 10px;
+}
+
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the textalign */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+
+}
+
+p, span{
+font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+font-weight: 300;
+line-height: 1.1;
+color: inherit;
 }
