@@ -18,13 +18,13 @@
         = @restaurant.address
       %br
       %h5{:id => "restaurantaddress"}
-        -unless @restaurant.business_hours.nil?
-          -if @restaurant.is_open?
-            = image_tag "green.png"
-            = "OPEN"
-          -else
-            = image_tag "red.png"
-            = "CLOSED"
+        -unless @restaurant.business_hours.nil? or @restaurant.business_hours.blank? or @restaurant.business_hours.empty?
+          / -if @restaurant.is_open?
+          = image_tag "green.png"
+          = "OPEN"
+          / -else
+          = image_tag "red.png"
+          = "CLOSED"
       %br
   .row
     %div#line-separator

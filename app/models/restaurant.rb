@@ -38,14 +38,15 @@ class Restaurant < ActiveRecord::Base
 	end
 
   #Filter by distance
+
+  def distance(lat, long)
+     Geocoder::Calculations.distance_between([lat,long], [latitude,longitude])
+  end
+
   def self.by_distance(lat, long)
 		puts self.inspect
 		Restaurant.all.sort {|a,b| a.distance(lat,long) <=> b.distance(lat,long)}
-    #Restaurant.order(self.distance(lat,long))
-  end
-
-  def distance(lat, long)
-    Geocoder::Calculations.distance_between([lat,long], [latitude,longitude])
+    # Restaurant.order(distance(lat,long))
   end
 
 	def address

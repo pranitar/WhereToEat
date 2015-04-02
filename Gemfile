@@ -25,6 +25,8 @@ gem 'haml'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'nested_form'
+gem 'jquery-star-rating-rails'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 

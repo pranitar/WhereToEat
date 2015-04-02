@@ -1,4 +1,4 @@
-<%= simple_form_for(@user, html: {class: 'form-horizontal' }) do |form| %>
+<%= simple_form_for(@restaurant_review, html: {class: 'form-horizontal' }) do |f| %>
   <% if @restaurant_review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@restaurant_review.errors.count, "error") %> prohibited this restaurant_review from being saved:</h2>
@@ -10,6 +10,8 @@
       </ul>
     </div>
   <% end %>
+  
+  <%= field_set_tag do %>
   <div class="field">
     <%= f.label :restaurant_id %><br>
     <%= f.text_field :restaurant_id %>
@@ -19,18 +21,33 @@
     <%= f.text_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label :review %><br>
-    <%= f.text_field :review %>
+    <%= f.label :review, :id => "formfont" %><br> 
+    <%= f.text_field :review, as: :text, :id => "formfont" %>
   </div>
-  <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
-  </div>
+ <div class="field"> 
+ </div>
+
+<!-- form_for @user do |f|
+  f.collection_radio_buttons :options, [[1, '★'] ,[2, '★★'], [3, '★★★'], [4, '★★★★'], [5, '★★★★★']], :first, :last
+end
+<input id="user_options_true" name="user[options]" type="radio" value="true" />
+<label class="collection_radio_buttons" for="user_options_true">Yes</label>
+<input id="user_options_false" name="user[options]" type="radio" value="false" />
+<label class="collection_radio_buttons" for="user_options_false">No</label> -->
+    
+    <div name="radio-group">
+    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+    </div>
+
+<br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Review", :class => "btn btn-default btn-sm" %>
+    <%= link_to 'Back', restaurant_reviews_path, :class => "btn btn-default btn-sm" %>
   </div>
+  <%end%>
+
 <% end %>

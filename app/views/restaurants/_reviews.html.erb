@@ -9,7 +9,7 @@
         </td>
         <td id="tablestriping"><%= restaurant_review.user.name %> says...<br><%= restaurant_review.review %></td>
         <td id="tablestriping">
-          <%= restaurant_review.rating.times do %>
+          <% restaurant_review.rating.times do %>
             <span class="glyphicon glyphicon-star"></span>
           <%end%>
         </td>

@@ -19,8 +19,6 @@
 //= require bootstrap
 
 
-
-
 /*handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   markers = handler.addMarkers([
@@ -40,4 +38,17 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 });
 
 */
+
+var rad = $('[name=radio-group]');
+console.log(rad.length);
+var prev = null;
+for(var i = 0; i < rad.length; i++) {
+    rad[i].onclick = function() {
+        (prev)? console.log(prev.value):null;
+        if(this !== prev) {
+            prev = this;
+        }
+        console.log(this.value)
+    };
+}
 
